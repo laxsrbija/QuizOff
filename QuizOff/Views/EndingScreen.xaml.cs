@@ -18,7 +18,7 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for EndingScreen.xaml
     /// </summary>
-    public partial class EndingScreen : UserControl
+    public partial class EndingScreen : Page
     {
         public EndingScreen()
         {

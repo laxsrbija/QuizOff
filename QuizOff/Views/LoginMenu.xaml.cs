@@ -18,11 +18,19 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for LoginMenu.xaml
     /// </summary>
-    public partial class LoginMenu : UserControl
+    public partial class LoginMenu : Page
     {
-        public LoginMenu()
+        private Frame frame;
+
+        public LoginMenu(Frame frame)
         {
             InitializeComponent();
+            this.frame = frame;
+        }
+
+        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = new MainMenu(frame);
         }
     }
 }

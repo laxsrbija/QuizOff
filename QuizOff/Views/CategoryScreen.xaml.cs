@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace QuizOff.Views
 {
     /// <summary>
-    /// Interaction logic for CategorySelection.xaml
+    /// Interaction logic for CategoryScreen.xaml
     /// </summary>
-    public partial class CategorySelection : UserControl
+    public partial class CategoryScreen : Page
     {
-        public CategorySelection()
+        public CategoryScreen()
         {
             InitializeComponent();
         }

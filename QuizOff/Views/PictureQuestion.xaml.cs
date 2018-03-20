@@ -18,7 +18,7 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for PictureQuestion.xaml
     /// </summary>
-    public partial class PictureQuestion : UserControl
+    public partial class PictureQuestion : Page
     {
         public PictureQuestion()
         {

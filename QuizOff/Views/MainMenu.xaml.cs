@@ -18,11 +18,16 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class MainMenu : Page
     {
-        public MainMenu()
+
+        private Frame frame;
+
+        public MainMenu(Frame frame)
         {
             InitializeComponent();
+            this.frame = frame;
         }
+
     }
 }

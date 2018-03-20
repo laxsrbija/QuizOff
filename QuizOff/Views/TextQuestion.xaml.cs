@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace QuizOff.Views
 {
     /// <summary>
-    /// Interaction logic for TextOnlyQuestion.xaml
+    /// Interaction logic for TextQuestion.xaml
     /// </summary>
-    public partial class TextOnlyQuestion : UserControl
+    public partial class TextQuestion : Page
     {
-        public TextOnlyQuestion()
+        public TextQuestion()
         {
             InitializeComponent();
         }

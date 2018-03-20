@@ -18,7 +18,7 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for Category.xaml
     /// </summary>
-    public partial class Category : UserControl
+    public partial class Category : Page
     {
         public Category()
         {
