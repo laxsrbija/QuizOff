@@ -36,6 +36,8 @@ namespace QuizOff
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // tajmer otkucava jednom u sekundi
             timer.Tick += Timer_Tick;
+            
+            new DbHelper();
 
         }
 
