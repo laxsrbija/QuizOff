@@ -17,9 +17,6 @@ namespace QuizOff
 
         private MySqlConnection connection;
 
-        /// <summary>
-        /// DbHelper constructor
-        /// </summary>
         public DbHelper()
         {
 
@@ -212,15 +209,6 @@ namespace QuizOff
         }
 
         /// <summary>
-        /// Called before disposing of the object. 
-        /// Closes the database connection.
-        /// </summary>
-        public void Dispose()
-        {
-            Close();
-        }
-
-        /// <summary>
         /// Closes the database connection
         /// </summary>
         public void Close()
@@ -229,6 +217,17 @@ namespace QuizOff
             {
                 connection.Close();
             }
+        }
+
+        public void Dispose()
+        {
+            Close();
+        }
+
+        ~DbHelper()
+        {
+            Console.WriteLine("Removing DbHelper...");
+            Dispose();
         }
 
     }
