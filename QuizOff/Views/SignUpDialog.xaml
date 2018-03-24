@@ -8,10 +8,9 @@
         Title="Create an account" Height="172.28" Width="318.933" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
         <Button Content="Sign Up" HorizontalAlignment="Left" Margin="28,96,0,0" VerticalAlignment="Top" Width="251" Height="21" IsDefault="True" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="99,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
-        <PasswordBox HorizontalAlignment="Left" Height="23" Margin="99,59,0,0" VerticalAlignment="Top" Width="180"/>
+        <TextBox Name="SignupUsername" HorizontalAlignment="Left" Height="23" Margin="99,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+        <PasswordBox Name="SignupPassword" HorizontalAlignment="Left" Height="23" Margin="99,59,0,0" VerticalAlignment="Top" Width="180"/>
         <Label Content="Username:" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="20,56,0,0" VerticalAlignment="Top"/>
-
     </Grid>
 </Window>

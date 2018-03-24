@@ -19,6 +19,9 @@ namespace QuizOff.Views
     /// </summary>
     public partial class SignUpDialog : Window
     {
+        
+        // TODO: Omogućiti dugme tek kada oba polja budu popunjena
+
         public SignUpDialog()
         {
             InitializeComponent();
@@ -28,5 +31,15 @@ namespace QuizOff.Views
         {
             DialogResult = true;
         }
+
+        public string Username {
+            get => SignupUsername.Text;
+        }
+
+        public string Password {
+            get => SignupPassword.Password;
+        }
+
     }
+
 }

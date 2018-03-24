@@ -51,9 +51,32 @@ namespace QuizOff.Views
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)new SignUpDialog().ShowDialog())
+
+            var dialog = new SignUpDialog();
+
+            if ((bool) dialog.ShowDialog())
             {
-                MessageBox.Show("Y");
+
+                // TODO: Premestiti logiku u sam SignUpDialog
+                var username = dialog.Username;
+                var password = Utils.Hashing.HashPassword(username, dialog.Password);
+
+                using (var db = new DbHelper())
+                {
+                    if (db.SelectSingleObject("select iduser from user where username = @u", new Dictionary<string, string>() { ["@u"] = username }) == null)
+                    {
+                        var id = db.Insert("insert into user (username, password) values (@u, @p)", new Dictionary<string, string>() { ["@u"] = username, ["@p"] = password });
+                        if (id > 0)
+                        {
+                            MessageBox.Show("Account successfully created.\nYou may now log in.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username already exists!");
+                    }
+                }
+
             } else
             {
                 MessageBox.Show("N");
