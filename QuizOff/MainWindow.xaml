@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizOff"
         mc:Ignorable="d"
-        Title="QuizOff" Height="600" Width="920" ResizeMode="CanMinimize" Icon="Resources/icon.ico" Loaded="Window_Loaded">
+        Title="QuizOff" Height="600" Width="920" ResizeMode="CanMinimize" Icon="Resources/icon.ico">
+    <!--Loaded="Window_Loaded">-->
     <Grid>
         <Frame Name="MainFrame" Content="Frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="auto" Width="auto" NavigationUIVisibility="Hidden"/>
     </Grid>

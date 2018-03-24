@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizOff.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="920
-      "
+      d:DesignHeight="600" d:DesignWidth="920"
       Title="MainMenu">
-
+    
     <Grid>
         <Image HorizontalAlignment="Center" Height="242" Margin="0,86,0,0" VerticalAlignment="Top" Width="405" Source="/QuizOff;component/Resources/logo-large.png"/>
     </Grid>
+    
 </Page>

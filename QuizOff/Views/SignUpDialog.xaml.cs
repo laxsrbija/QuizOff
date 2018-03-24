@@ -10,24 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuizOff.Views
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for SignUpDialog.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class SignUpDialog : Window
     {
-
-        private MainWindow main;
-
-        public MainMenu(MainWindow main)
+        public SignUpDialog()
         {
             InitializeComponent();
-            this.main = main;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }
