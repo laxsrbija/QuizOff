@@ -20,8 +20,8 @@ namespace QuizOff
         public DbHelper()
         {
 
-            var connectionString = "server=" + Constants.Db.DB_HOST + ";user=" + Constants.Db.DB_USER 
-                + ";database=" + Constants.Db.DB_NAME + ";port=" + Constants.Db.DB_PORT + ";password=" + Constants.Db.DB_PASSWORD;
+            var connectionString = "server=" + Utils.Parameters.Db.DB_HOST + ";user=" + Utils.Parameters.Db.DB_USER
+                + ";database=" + Utils.Parameters.Db.DB_NAME + ";port=" + Utils.Parameters.Db.DB_PORT + ";password=" + Utils.Parameters.Db.DB_PASSWORD;
 
             connection = new MySqlConnection(connectionString);
 
@@ -60,7 +60,8 @@ namespace QuizOff
                     command.Parameters.AddWithValue(key, parameters[key]);
                 }
 
-            } else
+            }
+            else
             {
                 command = new MySqlCommand(query, connection);
             }
@@ -132,7 +133,7 @@ namespace QuizOff
                     list.Add(row);
 
                 }
-            } 
+            }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
@@ -231,4 +232,5 @@ namespace QuizOff
         }
 
     }
+
 }
