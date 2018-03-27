@@ -25,7 +25,7 @@ namespace QuizOff.Models
         }
 
         public string Username {
-            get => Username;
+            get => username;
         }
 
         public string HashedPassword {

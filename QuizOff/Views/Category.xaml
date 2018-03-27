@@ -9,6 +9,9 @@
       Title="Category">
 
     <Grid>
-        
+        <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="158,58,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Id}" HorizontalAlignment="Left" Margin="168,153,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Description}" HorizontalAlignment="Left" Height="114" Margin="81,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="643"/>
+
     </Grid>
 </Page>

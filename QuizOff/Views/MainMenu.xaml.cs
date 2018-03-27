@@ -27,7 +27,17 @@ namespace QuizOff.Views
         {
             InitializeComponent();
             this.main = main;
+            UsernameLabel.Content = main.CurrentUser.Username;
         }
 
+        private void LogOffButton_Click(object sender, RoutedEventArgs e)
+        {
+            main.CurrentUser = null;
+        }
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            main.MainFrame.Content = new CategoryScreen(main);
+        }
     }
 }

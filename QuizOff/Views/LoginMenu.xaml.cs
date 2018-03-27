@@ -21,7 +21,7 @@ namespace QuizOff.Views
     /// </summary>
     public partial class LoginMenu : Page
     {
-
+        // TODO: Implementirati sistem pamćenja podataka korisnika, tako da ne mora da se prijavi svaki put
         private MainWindow main;
 
         public LoginMenu(MainWindow main)
@@ -43,7 +43,7 @@ namespace QuizOff.Views
             if (id != -1)
             {
                 main.CurrentUser = new User(id.ToString(), Username.Text, "asd");
-                Console.WriteLine(main.CurrentUser);
+                main.MainFrame.Content = new MainMenu(main);
             }
 
             //main.MainFrame.Content = new MainMenu(main);

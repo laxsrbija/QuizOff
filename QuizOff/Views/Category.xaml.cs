@@ -20,9 +20,17 @@ namespace QuizOff.Views
     /// </summary>
     public partial class Category : Page
     {
-        public Category()
+
+        private MainWindow main;
+        private Models.Category category;
+
+        public Category(MainWindow main, int id)
         {
             InitializeComponent();
+            this.main = main;
+            category = new Models.Category(id);
+            DataContext = category;
         }
+
     }
 }

@@ -20,9 +20,23 @@ namespace QuizOff.Views
     /// </summary>
     public partial class CategoryScreen : Page
     {
-        public CategoryScreen()
+
+        private MainWindow main;
+
+        public CategoryScreen(MainWindow main)
         {
             InitializeComponent();
+            this.main = main;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            main.MainFrame.Content = new MainMenu(main);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            main.MainFrame.Content = new Category(main, 1);
         }
     }
 }

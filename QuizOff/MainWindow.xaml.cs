@@ -24,14 +24,24 @@ namespace QuizOff
     public partial class MainWindow : Window
     {
 
-        public User CurrentUser { get; set; }
+        private User user;
+        public User CurrentUser {
+            get => user;
+            set {
+                user = value;
+                if (CurrentUser == null)
+                {
+                    MainFrame.Content = new LoginMenu(this);
+                }
+            }
+        }
 
         public MainWindow()
         {
 
             InitializeComponent();
 
-            MainFrame.Content = new LoginMenu(this);
+            CurrentUser = null;
 
         }
 
