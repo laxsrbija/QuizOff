@@ -23,6 +23,16 @@ namespace QuizOff
 
             }
 
+            public static class Quiz
+            {
+
+                public const int NUMBER_OF_QUESTIONS = 10;
+                public const int TIME_TO_ANSWER = 5;
+                public const int TIME_TO_READ = 2;
+                public const int TIME_TO_DISPLAY_ANSWER = 2;
+
+            }
+
         }
 
         public static class Hashing
@@ -36,6 +46,23 @@ namespace QuizOff
                 return EasyEncryption.SHA.ComputeSHA256Hash(username + SALT_LEFT + unhashedPassword + SALT_RIGHT);
             }
 
+        }
+
+        // Fisher-Yates Shuffle
+        public static void Shuffle<T>(this List<T> list)
+        {
+            Random random = new Random();
+            for (var i = 0; i < list.Count; i++)
+            {
+                list.Swap(i, random.Next(i, list.Count));
+            }
+        }
+
+        public static void Swap<T>(this List<T> list, int i, int j)
+        {
+            var tmp = list[i];
+            list[i] = list[j];
+            list[j] = tmp;
         }
 
     }
