@@ -15,11 +15,11 @@ namespace QuizOff.Models
             using (var db = new DbHelper())
             {
 
-                var result = db.SelectMultipleRows(
+                var result = db.SelectSingleRow(
                     new string[] { "name", "description", "image_url" }, 
                     "from category where idcategory = @id", 
                     new Dictionary<string, string>() { ["@id"] = id.ToString() }
-                )[0];
+                );
 
                 Id = id;
                 Name = result["name"].ToString();

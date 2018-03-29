@@ -151,6 +151,27 @@ namespace QuizOff
         }
 
         /// <summary>
+        /// Fetches a single row of data from the database.
+        /// </summary>
+        /// <param name="columns">An array of columns to select from the database</param>
+        /// <param name="query">Rest of the query string</param>
+        /// <param name="parameters">Parameter dictionary</param>
+        /// <returns>List of dictionaries. Each dictionary contains key-value pairs of data from a single row</returns>
+        public Dictionary<string, object> SelectSingleRow(string[] columns, string query, Dictionary<string, string> parameters = null)
+        {
+
+            var ret = SelectMultipleRows(columns, query, parameters);
+
+            if (ret != null && ret.Count > 0)
+            {
+                return ret[0];
+            }
+
+            return null;
+
+        }
+
+        /// <summary>
         /// Returns a single value from a database
         /// </summary>
         /// <param name="query">MySQL query</param>
