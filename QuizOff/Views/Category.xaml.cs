@@ -32,5 +32,12 @@ namespace QuizOff.Views
             DataContext = category;
         }
 
+        // TODO: Pokrece jedno izabrano pitanje. 
+        // U praksi treba pokrenuti instancu klase Game, 
+        // koja ce zatim da sadrzi pitanja i poziva njihove okvire.
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            main.MainFrame.Content = new TextQuestion(main, "1");
+        }
     }
 }
