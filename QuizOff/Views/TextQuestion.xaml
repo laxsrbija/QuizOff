@@ -9,12 +9,6 @@
       Title="TextQuestion">
 
     <Grid>
-        <TextBlock Text="{Binding GetQuestion.Text}" HorizontalAlignment="Left" Height="139" Margin="86,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="607"/>
-        <Button Content="{Binding GetQuestion[0]}" HorizontalAlignment="Left" Height="53" Margin="86,245,0,0" VerticalAlignment="Top" Width="266" Click="Button_Click"/>
-        <Button Content="{Binding GetQuestion[1]}" HorizontalAlignment="Left" Height="53" Margin="427,245,0,0" VerticalAlignment="Top" Width="266" Click="Button_Click"/>
-        <Button Content="{Binding GetQuestion[2]}" HorizontalAlignment="Left" Height="53" Margin="86,338,0,0" VerticalAlignment="Top" Width="266" Click="Button_Click"/>
-        <Button Content="{Binding GetQuestion[3]}" HorizontalAlignment="Left" Height="53" Margin="427,338,0,0" VerticalAlignment="Top" Width="266" Click="Button_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="756,33,0,0" VerticalAlignment="Top" Width="34" Height="22" Click="Button_Click_1"/>
-
+        <TextBlock Text="TEKST" HorizontalAlignment="Left" Height="139" Margin="86,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="607"/>
     </Grid>
 </Page>

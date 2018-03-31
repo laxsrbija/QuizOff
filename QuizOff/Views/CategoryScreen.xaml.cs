@@ -36,7 +36,7 @@ namespace QuizOff.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            main.MainFrame.Content = new Category(main, 1);
+            main.MainFrame.Content = new Category(main, "1");
         }
     }
 }

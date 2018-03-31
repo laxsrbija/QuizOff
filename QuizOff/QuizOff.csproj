@@ -120,6 +120,9 @@
     <Compile Include="Views\PictureQuestion.xaml.cs">
       <DependentUpon>PictureQuestion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\QuestionTemplate.xaml.cs">
+      <DependentUpon>QuestionTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SignUpDialog.xaml.cs">
       <DependentUpon>SignUpDialog.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PictureQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuestionTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

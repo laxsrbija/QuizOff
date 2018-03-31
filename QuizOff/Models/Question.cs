@@ -9,7 +9,7 @@ namespace QuizOff.Models
     public class Question
     {
 
-        public Question(string id, string text, string[] answers, string imageUrl)
+        public Question(string id, string text, string[] answers, string imageUrl, Random random)
         {
 
             Id = id;
@@ -19,7 +19,7 @@ namespace QuizOff.Models
             correctAnswer = answers[0];
 
             this.answers = new List<string>(answers);
-            this.answers.Shuffle();
+            this.answers.Shuffle(random);
 
         }
 

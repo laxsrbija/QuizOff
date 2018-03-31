@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizOff.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace QuizOff.Views
         private MainWindow main;
         private Models.Category category;
 
-        public Category(MainWindow main, int id)
+        public Category(MainWindow main, string id)
         {
             InitializeComponent();
             this.main = main;
@@ -32,12 +33,9 @@ namespace QuizOff.Views
             DataContext = category;
         }
 
-        // TODO: Pokrece jedno izabrano pitanje. 
-        // U praksi treba pokrenuti instancu klase Game, 
-        // koja ce zatim da sadrzi pitanja i poziva njihove okvire.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            main.MainFrame.Content = new TextQuestion(main, "1");
+            new Game(main, category);
         }
     }
 }

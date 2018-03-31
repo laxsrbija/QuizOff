@@ -28,8 +28,8 @@ namespace QuizOff
 
                 public const int NUMBER_OF_QUESTIONS = 10;
                 public const int TIME_TO_ANSWER = 5;
-                public const int TIME_TO_READ = 2;
-                public const int TIME_TO_DISPLAY_ANSWER = 2;
+                public const int TIME_TO_READ = 1;
+                public const int TIME_TO_DISPLAY_ANSWER = 1;
 
             }
 
@@ -49,9 +49,8 @@ namespace QuizOff
         }
 
         // Fisher-Yates Shuffle
-        public static void Shuffle<T>(this List<T> list)
+        public static void Shuffle<T>(this List<T> list, Random random) //
         {
-            Random random = new Random();
             for (var i = 0; i < list.Count; i++)
             {
                 list.Swap(i, random.Next(i, list.Count));

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace QuizOff.Models
 {
 
-    class Category
+    public class Category
     {
 
-        public Category(int id)
+        public Category(string id)
         {
             using (var db = new DbHelper())
             {
@@ -29,7 +29,7 @@ namespace QuizOff.Models
             }
         }
 
-        public int Id { get; private set; }
+        public string Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string ImageUrl { get; private set; }
