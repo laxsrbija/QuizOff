@@ -165,5 +165,12 @@ namespace QuizOff.Views
             displayAnswersTimer.Start();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            questionTimer.Stop();
+            displayAnswersTimer.Stop();
+            displayCorrectAnswerTimer.Stop();
+            CurrentGame.Main.MainFrame.Content = new Category(CurrentGame.Main, "1");
+        }
     }
 }
