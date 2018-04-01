@@ -28,8 +28,8 @@ namespace QuizOff
 
                 public const int NUMBER_OF_QUESTIONS = 10;
                 public const int TIME_TO_ANSWER = 5;
-                public const int TIME_TO_READ = 1;
-                public const int TIME_TO_DISPLAY_ANSWER = 1;
+                public const int TIME_TO_READ = 2;
+                public const int TIME_TO_DISPLAY_ANSWER = 2;
 
             }
 

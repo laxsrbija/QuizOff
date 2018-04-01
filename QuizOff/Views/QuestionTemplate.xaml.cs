@@ -89,7 +89,7 @@ namespace QuizOff.Views
 
         private void DisplayAnswersTimer_Tick(object sender, EventArgs e)
         {
-            if (displayAnswersTime++ >= Utils.Parameters.Quiz.TIME_TO_READ)
+            if (++displayAnswersTime >= Utils.Parameters.Quiz.TIME_TO_READ)
             {
                 DisplayAnswers();
                 displayAnswersTimer.Stop();
@@ -98,7 +98,7 @@ namespace QuizOff.Views
 
         private void QuestionTimer_Tick(object sender, EventArgs e)
         {
-            if (!gameRunning || Time-- == 0)
+            if (!gameRunning || --Time == 0)
             {
                 questionTimer.Stop(); 
                 // TODO Logika ako je vreme isteko
@@ -107,7 +107,7 @@ namespace QuizOff.Views
 
         private void DisplayCorrectAnswerTimer_Tick(object sender, EventArgs e)
         {
-            if (displayCorrectAnswerTime++ >= Utils.Parameters.Quiz.TIME_TO_DISPLAY_ANSWER)
+            if (++displayCorrectAnswerTime >= Utils.Parameters.Quiz.TIME_TO_DISPLAY_ANSWER)
             {
                 displayCorrectAnswerTimer.Stop();
                 CurrentGame.ShowNextQuestion();
