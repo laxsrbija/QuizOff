@@ -8,6 +8,6 @@
         Title="QuizOff" Height="600" Width="920" ResizeMode="CanMinimize" Icon="Resources/icon.ico">
     <!--Loaded="Window_Loaded">-->
     <Grid>
-        <Frame Name="MainFrame" Content="Frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="auto" Width="auto" NavigationUIVisibility="Hidden"/>
+        <Frame Content="{Binding MainFrame}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="auto" Width="auto" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

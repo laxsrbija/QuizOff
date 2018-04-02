@@ -43,10 +43,9 @@ namespace QuizOff.Views
             if (id != -1)
             {
                 main.CurrentUser = new User(id.ToString(), Username.Text, "asd");
-                main.MainFrame.Content = new MainMenu(main);
+                main.MainFrame = new MainMenu(main);
             }
-
-            //main.MainFrame.Content = new MainMenu(main);
+            
         }
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)

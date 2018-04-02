@@ -31,12 +31,12 @@ namespace QuizOff.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            main.MainFrame.Content = new MainMenu(main);
+            main.MainFrame = new MainMenu(main);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            main.MainFrame.Content = new Category(main, "1");
+            main.MainFrame = new Category(main, "1");
         }
     }
 }

@@ -2,6 +2,7 @@
 using QuizOff.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,19 @@ namespace QuizOff
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged // TODO Dodati notify i datacontext, a zatim promeniti svuda
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private Page mainFrame;
+        public Page MainFrame {
+            get => mainFrame;
+            set {
+                mainFrame = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MainFrame"));
+            }
+        }
 
         private User user;
         public User CurrentUser {
@@ -31,7 +43,7 @@ namespace QuizOff
                 user = value;
                 if (CurrentUser == null)
                 {
-                    MainFrame.Content = new LoginMenu(this);
+                    MainFrame = new LoginMenu(this);
                 }
             }
         }
@@ -42,6 +54,8 @@ namespace QuizOff
             InitializeComponent();
 
             CurrentUser = null;
+
+            DataContext = this;
 
         }
 

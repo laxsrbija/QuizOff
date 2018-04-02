@@ -68,7 +68,7 @@ namespace QuizOff.Models
                 return;
             }
 
-            Main.MainFrame.Content = new QuestionTemplate(this, questions[QuestionNumber++]);
+            Main.MainFrame = new QuestionTemplate(this, questions[QuestionNumber++]);
 
         }
 

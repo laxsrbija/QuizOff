@@ -37,7 +37,7 @@ namespace QuizOff.Views
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            main.MainFrame.Content = new CategoryScreen(main);
+            main.MainFrame = new CategoryScreen(main);
         }
     }
 }
