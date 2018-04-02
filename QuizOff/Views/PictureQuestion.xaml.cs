@@ -20,9 +20,15 @@ namespace QuizOff.Views
     /// </summary>
     public partial class PictureQuestion : Page
     {
-        public PictureQuestion()
+
+        public QuestionTemplate ParentTemplate { private set; get; }
+
+        public PictureQuestion(QuestionTemplate template)
         {
             InitializeComponent();
+            ParentTemplate = template;
+            DataContext = this;
         }
+
     }
 }

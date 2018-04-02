@@ -5,10 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizOff.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="175" d:DesignWidth="730"
       Title="PictureQuestion">
 
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding ParentTemplate.CurrentQuestion.ImageUrl}"/>
+            <TextBlock Text="{Binding ParentTemplate.CurrentQuestion.Text}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap"/>
+        </StackPanel>
     </Grid>
 </Page>

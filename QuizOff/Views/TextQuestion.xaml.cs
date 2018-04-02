@@ -22,9 +22,13 @@ namespace QuizOff.Views
     public partial class TextQuestion : Page
     {
 
-        public TextQuestion()
+        public QuestionTemplate ParentTemplate { private set; get; }
+
+        public TextQuestion(QuestionTemplate template)
         {
             InitializeComponent();
+            ParentTemplate = template;
+            DataContext = this;
         }
 
     }

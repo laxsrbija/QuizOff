@@ -27,6 +27,7 @@ namespace QuizOff.Views
         public Game CurrentGame { private set; get; }
         public Question CurrentQuestion { private set; get; }
         public int Points { private set; get; }
+        public Page QuestionTextPage { private set; get; }
 
         private bool gameRunning;
         private Button[] buttons;
@@ -82,6 +83,14 @@ namespace QuizOff.Views
             displayCorrectAnswerTimer = new DispatcherTimer();
             displayCorrectAnswerTimer.Interval = TimeSpan.FromSeconds(1);
             displayCorrectAnswerTimer.Tick += DisplayCorrectAnswerTimer_Tick;
+
+            if (CurrentQuestion.ImageUrl != null)
+            {
+                QuestionTextPage = new PictureQuestion(this);
+            } else
+            {
+                QuestionTextPage = new TextQuestion(this);
+            }
 
             DataContext = this;
 
