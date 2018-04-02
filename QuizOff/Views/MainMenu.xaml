@@ -11,7 +11,7 @@
     <Grid Style="{StaticResource QuizOffGridBackground}">
         <Image HorizontalAlignment="Center" Height="242" Margin="0,86,0,0" VerticalAlignment="Top" Width="405" Source="/QuizOff;component/Resources/logo-large.png"/>
         <Label Name="UsernameLabel" Content="Label" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,21,31,0" VerticalAlignment="Top" Width="145"/>
-        <Button Content="Play" HorizontalAlignment="Left" Margin="389,377,0,0" VerticalAlignment="Top" Width="75" Click="PlayButton_Click"/>
+        <Button Content="Play" HorizontalAlignment="Left" Margin="389,377,0,0" VerticalAlignment="Top" Width="75" Click="PlayButton_Click" IsDefault="True"/>
         <Button Content="Log out" HorizontalAlignment="Left" Margin="389,425,0,0" VerticalAlignment="Top" Width="75" Click="LogOffButton_Click"/>
     </Grid>
 

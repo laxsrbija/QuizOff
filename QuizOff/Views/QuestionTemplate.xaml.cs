@@ -107,11 +107,22 @@ namespace QuizOff.Views
 
         private void QuestionTimer_Tick(object sender, EventArgs e)
         {
+
             if (!gameRunning || --Time == 0)
             {
-                questionTimer.Stop(); 
-                // TODO Logika ako je vreme isteko
+                questionTimer.Stop();
             }
+
+            if (Time == 0)
+            {
+                gameRunning = false;
+
+                MarkCorrectAnswer(false);
+
+                displayCorrectAnswerTimer.Start();
+                CurrentGame.QuestionAnswered(this);
+            }
+
         }
 
         private void DisplayCorrectAnswerTimer_Tick(object sender, EventArgs e)
@@ -144,13 +155,14 @@ namespace QuizOff.Views
 
         }
 
-        private void MarkCorrectAnswer()
+        private void MarkCorrectAnswer(bool answered = true)
         {
             foreach (var button in buttons)
             {
                 if (CurrentQuestion.CheckAnswer(button.Content.ToString()))
                 {
-                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(Utils.Parameters.Quiz.COLOR_CORRECT_ANSWER));
+                    var color = answered ? Utils.Parameters.Quiz.COLOR_CORRECT_ANSWER : Utils.Parameters.Quiz.COLOR_UNANSWERED;
+                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(color));
                     break;
                 }
             }

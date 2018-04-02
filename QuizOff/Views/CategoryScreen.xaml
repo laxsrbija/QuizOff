@@ -10,7 +10,7 @@
 
     <Grid Style="{StaticResource QuizOffGridBackground}">
         <Button Content="Back" HorizontalAlignment="Left" Margin="117,104,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Cat1" HorizontalAlignment="Left" Margin="414,243,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Cat1" HorizontalAlignment="Left" Margin="414,243,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1" IsDefault="True"/>
 
     </Grid>
 </Page>
