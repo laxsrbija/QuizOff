@@ -22,7 +22,7 @@ namespace QuizOff
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged // TODO Dodati notify i datacontext, a zatim promeniti svuda
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

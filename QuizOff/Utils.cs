@@ -31,6 +31,9 @@ namespace QuizOff
                 public const int TIME_TO_READ = 2;
                 public const int TIME_TO_DISPLAY_ANSWER = 2;
 
+                public const string COLOR_CORRECT_ANSWER = "#8fbc8f";
+                public const string COLOR_WRONG_ANSWER = "#924545";
+
             }
 
         }

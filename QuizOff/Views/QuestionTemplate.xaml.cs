@@ -136,7 +136,7 @@ namespace QuizOff.Views
 
             var button = sender as Button;
             
-            button.Background = new SolidColorBrush(Colors.Red);
+            button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(Utils.Parameters.Quiz.COLOR_WRONG_ANSWER));
             MarkCorrectAnswer();
 
             displayCorrectAnswerTimer.Start();
@@ -150,7 +150,7 @@ namespace QuizOff.Views
             {
                 if (CurrentQuestion.CheckAnswer(button.Content.ToString()))
                 {
-                    button.Background = new SolidColorBrush(Colors.Green);
+                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(Utils.Parameters.Quiz.COLOR_CORRECT_ANSWER));
                     break;
                 }
             }

@@ -4,6 +4,43 @@
              xmlns:local="clr-namespace:QuizOff"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style x:Key="QuizOffGridBackground" TargetType="Grid">
+            <Setter Property="Background" Value="#283149"/>
+        </Style>
+
+        <!-- TODO: Linija ne treperi -->
+        <Style x:Key="QuizOffTextBox" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Gotham"/>
+            <Setter Property="Background" Value="#ebebeb"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="0" >
+                            <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Text}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="QuizOffButton" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Gotham"/>
+            <Setter Property="FontSize" Value="16px"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="Background" Value="#404b69"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="0" >
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

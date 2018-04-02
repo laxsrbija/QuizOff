@@ -8,9 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginMenu">
 
-    <Grid Background="#283149">
+    <Grid Style="{StaticResource QuizOffGridBackground}">
         <TextBlock FontFamily="pack://application:,,,/Resources/#Gotham Medium" HorizontalAlignment="Left" Margin="340,334,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec adipisci nilla quis libero egestas lobortis. Duis blandit imperdiet ornare. Nulla ac arcu ut purus placerat congue. Integer pretium fermentum gravida." VerticalAlignment="Top" Height="94" Width="450" FontSize="18"/>
-        <Button Content="Log In" HorizontalAlignment="Left" Margin="90,233,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click"/>
+        <Button Content="Log In" HorizontalAlignment="Left" Margin="90,233,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click" IsDefault="True"/>
         <Button Content="Create an account" HorizontalAlignment="Left" Margin="377,222,0,0" VerticalAlignment="Top" Width="173" Click="SignUpButton_Click" RenderTransformOrigin="0.5,0.5" Height="23">
         </Button>
         <TextBox Name="Username" HorizontalAlignment="Left" Height="23" Margin="90,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
