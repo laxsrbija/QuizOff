@@ -9,6 +9,14 @@
             <Setter Property="Background" Value="#283149"/>
         </Style>
 
+        <Style x:Key="QuizOffQuestionTextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Gotham"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="36px"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
         <!-- TODO: Linija ne treperi -->
         <Style x:Key="QuizOffTextBox" TargetType="TextBox">
             <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Gotham"/>

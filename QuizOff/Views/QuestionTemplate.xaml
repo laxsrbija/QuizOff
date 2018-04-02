@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizOff.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="561" d:DesignWidth="904
+      "
       Loaded="Page_Loaded"
       Title="QuestionTemplate">
 
@@ -14,11 +15,11 @@
         <Label Content="{Binding CurrentGame.QuestionNumber}" HorizontalAlignment="Left" Margin="312,17,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding Time, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="420,17,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding CurrentGame.Main.CurrentUser.Username}" HorizontalAlignment="Left" Margin="550,17,0,0" VerticalAlignment="Top"/>
-        <Frame Content="{Binding QuestionTextPage}" HorizontalAlignment="Left" Height="175" Margin="35,64,0,0" VerticalAlignment="Top" Width="730"/>
-        <Button Name="B1" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[0]}" HorizontalAlignment="Left" Margin="82,274,0,0" VerticalAlignment="Top" Width="290" Height="60" Click="AnswerButton_Click"/>
-        <Button Name="B2" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[1]}" HorizontalAlignment="Left" Margin="420,274,0,0" VerticalAlignment="Top" Width="290" Height="60" Click="AnswerButton_Click"/>
-        <Button Name="B3" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[2]}" HorizontalAlignment="Left" Margin="82,352,0,0" VerticalAlignment="Top" Width="290" Height="60" Click="AnswerButton_Click"/>
-        <Button Name="B4" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[3]}" HorizontalAlignment="Left" Margin="420,352,0,0" VerticalAlignment="Top" Width="290" Height="60" Click="AnswerButton_Click"/>
+        <Frame Content="{Binding QuestionTextPage}" HorizontalAlignment="Left" Height="300" Margin="29,64,0,0" VerticalAlignment="Top" Width="840"/>
+        <Button Name="B1" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[0]}" HorizontalAlignment="Left" Margin="29,393,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
+        <Button Name="B2" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[1]}" HorizontalAlignment="Left" Margin="459,393,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
+        <Button Name="B3" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[2]}" HorizontalAlignment="Left" Margin="29,471,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
+        <Button Name="B4" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[3]}" HorizontalAlignment="Left" Margin="459,471,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="27,12,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>

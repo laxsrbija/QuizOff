@@ -20,7 +20,8 @@ namespace QuizOff.Views
 {
     /// <summary>
     /// Interaction logic for QuestionTemplate.xaml
-    /// </summary>
+    /// </summary> 
+    // TODO Refaktorisati ceo dokument
     public partial class QuestionTemplate : Page, INotifyPropertyChanged
     {
 

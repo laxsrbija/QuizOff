@@ -13,8 +13,8 @@
         <Button Content="Log In" HorizontalAlignment="Left" Margin="90,233,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click" IsDefault="True"/>
         <Button Content="Create an account" HorizontalAlignment="Left" Margin="377,222,0,0" VerticalAlignment="Top" Width="173" Click="SignUpButton_Click" RenderTransformOrigin="0.5,0.5" Height="23">
         </Button>
-        <TextBox Name="Username" HorizontalAlignment="Left" Height="23" Margin="90,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox Name="Password" HorizontalAlignment="Left" Height="23" Margin="90,204,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="lax" Name="Username" HorizontalAlignment="Left" Height="23" Margin="90,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox Password="lax" Name="Password" HorizontalAlignment="Left" Height="23" Margin="90,204,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>
