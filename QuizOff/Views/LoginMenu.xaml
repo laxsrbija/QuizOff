@@ -5,16 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizOff.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="561" d:DesignWidth="904"
       Title="LoginMenu">
 
     <Grid Style="{StaticResource QuizOffGridBackground}">
-        <TextBlock FontFamily="pack://application:,,,/Resources/#Gotham Medium" HorizontalAlignment="Left" Margin="340,334,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec adipisci nilla quis libero egestas lobortis. Duis blandit imperdiet ornare. Nulla ac arcu ut purus placerat congue. Integer pretium fermentum gravida." VerticalAlignment="Top" Height="94" Width="450" FontSize="18"/>
-        <Button Content="Log In" HorizontalAlignment="Left" Margin="90,233,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click" IsDefault="True"/>
-        <Button Content="Create an account" HorizontalAlignment="Left" Margin="377,222,0,0" VerticalAlignment="Top" Width="173" Click="SignUpButton_Click" RenderTransformOrigin="0.5,0.5" Height="23">
+        <Image HorizontalAlignment="Center" Height="271" Margin="231,58,230,0" VerticalAlignment="Top" Width="443" Source="/QuizOff;component/Resources/logo-large.png"/>
+        <TextBlock FontFamily="pack://application:,,,/Resources/#Gotham" Foreground="White" HorizontalAlignment="Left" Margin="479,404,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec adipisci nilla quis libero egestas lobortis. Duis blandit imperdiet ornare. Nulla ac arcu ut purus placerat congue. Integer pretium fermentum gravida." VerticalAlignment="Top" Height="59" Width="344"/>
+        <Button Content="Log In" HorizontalAlignment="Left" Margin="83,468,0,0" VerticalAlignment="Top" Width="344" Click="LoginButton_Click" IsDefault="True" Height="23"/>
+        <Button Content="Create an account" HorizontalAlignment="Left" Margin="479,468,0,0" VerticalAlignment="Top" Width="344" Click="SignUpButton_Click" RenderTransformOrigin="0.5,0.5" Height="23">
         </Button>
-        <TextBox Text="lax" Name="Username" HorizontalAlignment="Left" Height="23" Margin="90,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox Password="lax" Name="Password" HorizontalAlignment="Left" Height="23" Margin="90,204,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="lax" Name="Username" HorizontalAlignment="Left" Height="23" Margin="83,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344"/>
+        <PasswordBox Password="lax" Name="Password" HorizontalAlignment="Left" Height="23" Margin="83,432,0,0" VerticalAlignment="Top" Width="344"/>
+        <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="135" Margin="452,381,0,0" VerticalAlignment="Top" Width="1"/>
 
     </Grid>
 </Page>
