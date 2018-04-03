@@ -38,5 +38,11 @@ namespace QuizOff.Views
         {
             main.MainFrame = new Category(main, "1");
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            main.MainFrame = new Category(main, "2");
+        }
+
     }
 }

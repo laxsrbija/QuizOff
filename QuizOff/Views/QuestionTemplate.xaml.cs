@@ -192,7 +192,7 @@ namespace QuizOff.Views
             questionTimer.Stop();
             displayAnswersTimer.Stop();
             displayCorrectAnswerTimer.Stop();
-            CurrentGame.Main.MainFrame = new Category(CurrentGame.Main, "1");
+            CurrentGame.Main.MainFrame = new Category(CurrentGame.Main, CurrentGame.CurrentCategory.Id);
         }
     }
 }
