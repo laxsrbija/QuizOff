@@ -76,16 +76,9 @@ namespace QuizOff
             list[j] = tmp;
         }
 
-        public static string DateTimeToMySqlFormat(DateTime date, bool localTime = true)
+        public static string DateTimeToMySqlFormat(DateTime date)
         {
-
-            if (localTime)
-            {
-                date = date.ToLocalTime();
-            }
-
             return date.ToString("yyyy-MM-dd HH:mm:ss");
-
         }
 
     }
