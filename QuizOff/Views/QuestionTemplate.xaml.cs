@@ -27,7 +27,6 @@ namespace QuizOff.Views
 
         public Game CurrentGame { private set; get; }
         public Question CurrentQuestion { private set; get; }
-        public int Points { private set; get; }
         public Page QuestionTextPage { private set; get; }
 
         private bool gameRunning;
@@ -59,8 +58,6 @@ namespace QuizOff.Views
 
             CurrentGame = game;
             CurrentQuestion = question;
-
-            Points = 50; // TODO Racunati poene
 
             buttons = new Button[] { B1, B2, B3, B4 };
             gameRunning = false;
@@ -101,8 +98,16 @@ namespace QuizOff.Views
         {
             if (++displayAnswersTime >= Utils.Parameters.Quiz.TIME_TO_READ)
             {
-                DisplayAnswers();
+
+                foreach (var button in buttons)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+
+                gameRunning = true;
+                questionTimer.Start();
                 displayAnswersTimer.Stop();
+
             }
         }
 
@@ -116,12 +121,7 @@ namespace QuizOff.Views
 
             if (Time == 0)
             {
-                gameRunning = false;
-
-                MarkCorrectAnswer(false);
-
-                displayCorrectAnswerTimer.Start();
-                CurrentGame.QuestionAnswered(this);
+                QuestionFinished();
             }
 
         }
@@ -138,53 +138,74 @@ namespace QuizOff.Views
         private void AnswerButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (!gameRunning)
+            if (gameRunning)
             {
-                return;
-            } else
-            {
-                gameRunning = false;
+                QuestionFinished(sender as Button);
             }
-
-            var button = sender as Button;
-            
-            button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(Utils.Parameters.Quiz.COLOR_WRONG_ANSWER));
-            MarkCorrectAnswer();
-
-            displayCorrectAnswerTimer.Start();
-            CurrentGame.QuestionAnswered(this);
 
         }
 
-        private void MarkCorrectAnswer(bool answered = true)
+        private void QuestionFinished(Button button = null)
         {
+
+            gameRunning = false;
+
+            if (button != null)
+            {
+                button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(Utils.Parameters.Quiz.COLOR_WRONG_ANSWER));
+            }
+            
+            var status = VerifyAnswer(button);
+
+            //Console.WriteLine(status.ToString());
+
+            displayCorrectAnswerTimer.Start();
+            CurrentGame.QuestionAnswered(CurrentQuestion.DbGameQuestionId, status.ToString());
+
+        }
+
+        private enum QuestionStatus { UNANSWERED, CORRECT, INCORRECT };
+
+        /// <summary>
+        /// Verifies the validity of the answer (if chosen) and marks the correct answer
+        /// </summary>
+        /// <param name="b">Button representing the chosen answer</param>
+        /// <returns>QuestionStatus enum containing the question's state</returns>
+        private QuestionStatus VerifyAnswer(Button b)
+        {
+
             foreach (var button in buttons)
             {
                 if (CurrentQuestion.CheckAnswer(button.Content.ToString()))
                 {
-                    var color = answered ? Utils.Parameters.Quiz.COLOR_CORRECT_ANSWER : Utils.Parameters.Quiz.COLOR_UNANSWERED;
-                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(color));
+
+                    if (b == null)
+                    {
+                        button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(Utils.Parameters.Quiz.COLOR_UNANSWERED));
+                        return QuestionStatus.UNANSWERED;
+                    }
+
+                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom(Utils.Parameters.Quiz.COLOR_CORRECT_ANSWER));
+                    if (button.Equals(b))
+                    {
+                        return QuestionStatus.CORRECT;
+                    }
+
                     break;
+
                 }
             }
-        }
 
-        private void DisplayAnswers()
-        {
-
-            foreach (var button in buttons)
-            {
-                button.Visibility = Visibility.Visible;
-            }
-
-            gameRunning = true;
-            questionTimer.Start();
+            return QuestionStatus.INCORRECT;
 
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
+            CurrentGame.QuestionLoaded(CurrentQuestion);
             displayAnswersTimer.Start();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -194,5 +215,6 @@ namespace QuizOff.Views
             displayCorrectAnswerTimer.Stop();
             CurrentGame.Main.MainFrame = new Category(CurrentGame.Main, CurrentGame.CurrentCategory.Id);
         }
+
     }
 }

@@ -29,6 +29,8 @@ namespace QuizOff.Models
         public string Text { private set; get; }
         public string ImageUrl { private set; get; }
 
+        public long DbGameQuestionId { set; get; }
+
         private List<string> answers;
         public string this[int id] {
             get {

@@ -219,7 +219,7 @@ namespace QuizOff
         }
 
         /// <summary>
-        /// Updates data from te database
+        /// Updates data from the database
         /// </summary>
         /// <param name="query">MySQL query</param>
         /// <param name="parameters">Parameter dictionary</param>

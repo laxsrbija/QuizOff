@@ -16,11 +16,12 @@ namespace QuizOff.Models
         private List<Question> questions;
         public int QuestionNumber { private set; get; }
 
+        public long DbGameId { private set; get; }
+
         public Game(MainWindow main, Category category)
         {
             Main = main;
             CurrentCategory = category;
-            Points = 0;
             questions = LoadQuestions();
             QuestionNumber = 0;
             ShowNextQuestion();
@@ -54,6 +55,8 @@ namespace QuizOff.Models
 
                 }
 
+                DbGameId = db.Insert("insert into game (user_iduser, category_idcategory, time_start) values (" + Main.CurrentUser.Id + ", " + CurrentCategory.Id + ", " + GetCurrentDateTime() + ")");
+
             }
 
             return list;
@@ -65,19 +68,49 @@ namespace QuizOff.Models
 
             if (QuestionNumber >= Utils.Parameters.Quiz.NUMBER_OF_QUESTIONS)
             {
+
+                using (var db = new DbHelper())
+                {
+                    db.Update("update game set time_end = " + GetCurrentDateTime() + " where idgame = @id", new Dictionary<string, string>() { ["@id"] = DbGameId.ToString() });
+                }
+
+                Console.WriteLine("Game ID: " + DbGameId);
+
+                Main.MainFrame = new EndingScreen(this);
+
                 return;
+
             }
 
             Main.MainFrame = new QuestionTemplate(this, questions[QuestionNumber++]);
 
         }
 
-        public int Points { private set; get; }
-
-        public void QuestionAnswered(QuestionTemplate template)
+        public void QuestionAnswered(long dbGameQuestionId, string status)
         {
-            Points += template.Points;
+            using (var db = new DbHelper())
+            {
+                db.Update("update game_questions set time_completed = " + GetCurrentDateTime() + ", question_status = '" + status + "' where idgame_questions = " + dbGameQuestionId);
+            }
         }
+
+        public void QuestionLoaded(Question question)
+        {
+            using (var db = new DbHelper())
+            {
+                question.DbGameQuestionId = db.Insert("insert into game_questions (game_idgame, question_idquestion, time_served) values (" 
+                    + DbGameId.ToString() + ", " + question.Id + ", " + GetCurrentDateTime() + ")");
+            }
+        }
+
+        // TODO: Prebaciti racunanje vremena na server
+        private string GetCurrentDateTime()
+        {
+            var str = DateTime.Now.ToString("u");
+            return "'" + str.Remove(str.Length - 1, 1) + "'";
+        }
+
+        // TODO: Ispraviti racunanje vremena. Trenutna varijanta ne uzima u obzir milisekunde, pa se vreme ne racuna korektno.
 
     }
 }

@@ -9,6 +9,8 @@
       Title="EndingScreen">
 
     <Grid Style="{StaticResource QuizOffGridBackground}">
-        
+        <Label Name="TestLabel" Content="Label" HorizontalAlignment="Left" Margin="265,172,0,0" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="437,185,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 </Page>

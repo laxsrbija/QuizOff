@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizOff.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace QuizOff.Views
     /// </summary>
     public partial class EndingScreen : Page
     {
-        public EndingScreen()
+
+        private Game game;
+
+        public EndingScreen(Game game)
         {
+
             InitializeComponent();
+
+            this.game = game;
+
+            using (var db = new DbHelper())
+            {
+                TestLabel.Content = db.SelectSingleObject("select total_points from game where idgame = " + game.DbGameId).ToString();
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            game.Main.MainFrame = new Category(game.Main, "2");
         }
     }
 }
