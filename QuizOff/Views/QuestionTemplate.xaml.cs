@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -159,7 +161,17 @@ namespace QuizOff.Views
             
             var status = VerifyAnswer(button);
 
-            //Console.WriteLine(status.ToString());
+            var sound = Properties.Resources.unanswered;
+            if (status == QuestionStatus.CORRECT)
+            {
+                sound = Properties.Resources.correct;
+            } else if (status == QuestionStatus.INCORRECT)
+            {
+                sound = Properties.Resources.incorrect;
+            }
+
+            var soundPlayer = new SoundPlayer(sound);
+            soundPlayer.Play();
 
             displayCorrectAnswerTimer.Start();
             CurrentGame.QuestionAnswered(CurrentQuestion.DbGameQuestionId, status.ToString());
