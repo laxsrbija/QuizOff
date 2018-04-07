@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using Yort.Ntp;
 
 namespace QuizOff.Models
 {
@@ -55,12 +58,31 @@ namespace QuizOff.Models
 
                 }
 
-                DbGameId = db.Insert("insert into game (user_iduser, category_idcategory, time_start) values (" + Main.CurrentUser.Id + ", " + CurrentCategory.Id + ", " + GetCurrentDateTime() + ")");
-
             }
+
+            new Thread(() =>
+            {
+
+                Thread.CurrentThread.IsBackground = true;
+
+                var client = new NtpClient(Utils.Parameters.Ntp.NTP_SERVER);
+                client.TimeReceived += InsertGameStartTime;
+                client.BeginRequestTime();
+
+            }).Start();
 
             return list;
 
+        }
+
+        private void InsertGameStartTime(object sender, NtpTimeReceivedEventArgs e)
+        {
+            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
+            Console.WriteLine("Game start time: {0}", time);
+            using (var db = new DbHelper())
+            {
+                DbGameId = db.Insert("insert into game (user_iduser, category_idcategory, time_start) values (" + Main.CurrentUser.Id + ", " + CurrentCategory.Id + ", '" + time + "')");
+            }
         }
 
         public void ShowNextQuestion()
@@ -69,14 +91,16 @@ namespace QuizOff.Models
             if (QuestionNumber >= Utils.Parameters.Quiz.NUMBER_OF_QUESTIONS)
             {
 
-                using (var db = new DbHelper())
+                new Thread(() =>
                 {
-                    db.Update("update game set time_end = " + GetCurrentDateTime() + " where idgame = @id", new Dictionary<string, string>() { ["@id"] = DbGameId.ToString() });
-                }
 
-                Console.WriteLine("Game ID: " + DbGameId);
+                    Thread.CurrentThread.IsBackground = true;
 
-                Main.MainFrame = new EndingScreen(this);
+                    var client = new NtpClient(Utils.Parameters.Ntp.NTP_SERVER);
+                    client.TimeReceived += UpdateGameEndTime;
+                    client.BeginRequestTime();
+
+                }).Start();
 
                 return;
 
@@ -86,31 +110,74 @@ namespace QuizOff.Models
 
         }
 
+        private void UpdateGameEndTime(object sender, NtpTimeReceivedEventArgs e)
+        {
+
+            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
+            Console.WriteLine("Game end time: {0}", time);
+
+            using (var db = new DbHelper())
+            {
+                db.Update("update game set time_end = '" + time + "' where idgame = " + DbGameId);
+            }
+
+            Application.Current.Dispatcher.Invoke((Action)(() => {
+                Main.MainFrame = new EndingScreen(this);
+            }));
+
+        }
+
+        public void QuestionStarted(Question question)
+        {
+            new Thread(() =>
+            {
+
+                Thread.CurrentThread.IsBackground = true;
+
+                var client = new NtpClient(Utils.Parameters.Ntp.NTP_SERVER);
+                client.TimeReceived += (sender, e) => InsertQuestionStartTime(sender, e, question);
+                client.BeginRequestTime();
+
+            }).Start();
+        }
+
+        private void InsertQuestionStartTime(object sender, NtpTimeReceivedEventArgs e, Question question)
+        {
+            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
+            Console.WriteLine("Question {1} for game {2} start time: {0}", time, QuestionNumber, DbGameId);
+            using (var db = new DbHelper())
+            {
+                question.DbGameQuestionId = db.Insert("insert into game_questions (game_idgame, question_idquestion, time_served) values ("
+                    + DbGameId.ToString() + ", " + question.Id + ", '" + time + "')");
+            }
+        }
+
         public void QuestionAnswered(long dbGameQuestionId, string status)
         {
+            new Thread(() =>
+            {
+
+                Thread.CurrentThread.IsBackground = true;
+
+                var client = new NtpClient(Utils.Parameters.Ntp.NTP_SERVER);
+                client.TimeReceived += (sender, e) => UpdateQuestionEndTime(sender, e, dbGameQuestionId, status);
+                client.BeginRequestTime();
+
+            }).Start();
+        }
+
+        private void UpdateQuestionEndTime(object sender, NtpTimeReceivedEventArgs e, long dbGameQuestionId, string status)
+        {
+            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
+            Console.WriteLine("Question {1} end time: {0}", time, QuestionNumber);
             using (var db = new DbHelper())
             {
-                db.Update("update game_questions set time_completed = " + GetCurrentDateTime() + ", question_status = '" + status + "' where idgame_questions = " + dbGameQuestionId);
+                db.Update("update game_questions set time_completed = '" + time + "', question_status = '" + status + "' where idgame_questions = " + dbGameQuestionId);
             }
         }
 
-        public void QuestionLoaded(Question question)
-        {
-            using (var db = new DbHelper())
-            {
-                question.DbGameQuestionId = db.Insert("insert into game_questions (game_idgame, question_idquestion, time_served) values (" 
-                    + DbGameId.ToString() + ", " + question.Id + ", " + GetCurrentDateTime() + ")");
-            }
-        }
-
-        // TODO: Prebaciti racunanje vremena na server
-        private string GetCurrentDateTime()
-        {
-            var str = DateTime.Now.ToString("u");
-            return "'" + str.Remove(str.Length - 1, 1) + "'";
-        }
-
-        // TODO: Ispraviti racunanje vremena. Trenutna varijanta ne uzima u obzir milisekunde, pa se vreme ne racuna korektno.
+        // TODO: Dodati #region sekcije radi citljivosti
 
     }
+
 }

@@ -26,7 +26,7 @@ namespace QuizOff
             public static class Quiz
             {
 
-                public const int NUMBER_OF_QUESTIONS = 2;
+                public const int NUMBER_OF_QUESTIONS = 10;
                 public const int TIME_TO_ANSWER = 5;
                 public const int TIME_TO_READ = 2;
                 public const int TIME_TO_DISPLAY_ANSWER = 2;
@@ -34,6 +34,14 @@ namespace QuizOff
                 public const string COLOR_CORRECT_ANSWER = "#8fbc8f";
                 public const string COLOR_WRONG_ANSWER = "#f2115b";
                 public const string COLOR_UNANSWERED = "#e1ca09";
+
+            }
+
+            public static class Ntp
+            {
+
+                // rs.pool.ntp.org
+                public const string NTP_SERVER = "147.91.8.77";
 
             }
 
@@ -66,6 +74,18 @@ namespace QuizOff
             var tmp = list[i];
             list[i] = list[j];
             list[j] = tmp;
+        }
+
+        public static string DateTimeToMySqlFormat(DateTime date, bool localTime = true)
+        {
+
+            if (localTime)
+            {
+                date = date.ToLocalTime();
+            }
+
+            return date.ToString("yyyy-MM-dd HH:mm:ss");
+
         }
 
     }

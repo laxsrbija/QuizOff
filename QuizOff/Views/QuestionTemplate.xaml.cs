@@ -104,6 +104,8 @@ namespace QuizOff.Views
                     button.Visibility = Visibility.Visible;
                 }
 
+                CurrentGame.QuestionStarted(CurrentQuestion);
+
                 gameRunning = true;
                 questionTimer.Start();
                 displayAnswersTimer.Stop();
@@ -167,7 +169,7 @@ namespace QuizOff.Views
         private enum QuestionStatus { UNANSWERED, CORRECT, INCORRECT };
 
         /// <summary>
-        /// Verifies the validity of the answer (if chosen) and marks the correct answer
+        /// Verifies the validity of the given answer (if available) and marks the correct answer
         /// </summary>
         /// <param name="b">Button representing the chosen answer</param>
         /// <returns>QuestionStatus enum containing the question's state</returns>
@@ -202,10 +204,7 @@ namespace QuizOff.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
-            CurrentGame.QuestionLoaded(CurrentQuestion);
             displayAnswersTimer.Start();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
