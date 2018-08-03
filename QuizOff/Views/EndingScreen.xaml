@@ -9,8 +9,10 @@
       Title="EndingScreen">
 
     <Grid Style="{StaticResource QuizOffGridBackground}">
-        <Label Name="TestLabel" Content="Label" HorizontalAlignment="Left" Margin="265,172,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="437,185,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-
+        <Label Content="{Binding Points}" HorizontalAlignment="Left" Margin="69,219,0,0" VerticalAlignment="Top"/>
+        <Button Content="Play Again" HorizontalAlignment="Left" Margin="84,332,0,0" VerticalAlignment="Top" Width="135" Click="PlayAgain"/>
+        <Button Content="Return to Main Menu" HorizontalAlignment="Left" Margin="84,357,0,0" VerticalAlignment="Top" Width="135" Click="ReturnToMain"/>
+        <StackPanel Name="Scoreboard" Orientation="Vertical" HorizontalAlignment="Left" Height="396" Margin="387,34,0,0" VerticalAlignment="Top" Width="370"/>
+        <Label Content="Your score:" HorizontalAlignment="Left" Margin="79,136,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>
