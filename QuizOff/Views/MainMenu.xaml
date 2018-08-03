@@ -8,12 +8,14 @@
       d:DesignHeight="561" d:DesignWidth="904"
       Title="MainMenu">
 
-    <Grid Style="{StaticResource QuizOffGridBackground}">
-        <Image HorizontalAlignment="Center" Height="271" Margin="231,58,230,0" VerticalAlignment="Top" Width="443" Source="/QuizOff;component/Resources/logo-large.png"/>
-        <Label Name="UsernameLabel" Content="Label" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,21,31,0" VerticalAlignment="Top" Width="145"/>
-        <Button Content="Play" HorizontalAlignment="Left" Margin="389,377,0,0" VerticalAlignment="Top" Width="75" Click="PlayButton_Click" IsDefault="True"/>
-        <Button Content="Log out" HorizontalAlignment="Left" Margin="389,425,0,0" VerticalAlignment="Top" Width="75" Click="LogOffButton_Click"/>
-        <Image Source="{Binding AudioIcon}" HorizontalAlignment="Left" Margin="702,47,0,0" VerticalAlignment="Top" Width="32" Height="32" MouseDown="ToggleAudio"/>
-    </Grid>
+    <StackPanel Style="{StaticResource QuizOffStackPanel}" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 20, 20, 0">
+            <Label Content="{Binding Username}" Style="{StaticResource QuizOffLabel}" FontSize="18" Margin="0, 0, 20, 0"/>
+            <Image Source="{Binding AudioIcon}" Width="32" Height="32" MouseDown="ToggleAudio"/>
+        </StackPanel>
+        <Image Height="271" Width="443" Margin="0, 15, 0, 30" Source="/QuizOff;component/Resources/logo-large.png"/>
+        <Button Style="{StaticResource QuizOffButton}" Content="Play" Width="450" Margin="0, 20, 0, 0" Height="40" Click="PlayButton_Click" IsDefault="True" Cursor="Hand"/>
+        <Button Style="{StaticResource QuizOffButton}" Content="Log out" Width="450" Margin="0, 20, 0, 0" Height="40" Click="LogOffButton_Click" Cursor="Hand"/>
+    </StackPanel>
 
 </Page>

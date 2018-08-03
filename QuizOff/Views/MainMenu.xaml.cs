@@ -35,14 +35,16 @@ namespace QuizOff.Views
             }
         }
 
+        public string Username { get; set; }
+
         public MainMenu(MainWindow main)
         {
 
             InitializeComponent();
 
             this.main = main;
-            UsernameLabel.Content = main.CurrentUser.Username;
             AudioIcon = Properties.Settings.Default.PlayAudio ? "on" : "off";
+            Username = main.CurrentUser.Username;
 
             DataContext = this;
 
