@@ -234,5 +234,9 @@
   <ItemGroup>
     <Resource Include="Resources\logo-horizontal.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\volume-on.png" />
+    <Resource Include="Resources\volume-off.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

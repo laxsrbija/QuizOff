@@ -160,7 +160,10 @@ namespace QuizOff.Views
             }
 
             var soundPlayer = new SoundPlayer(sound);
-            soundPlayer.Play(); // TODO: Dodati mogucnost mutiranja igre i cuvati tu vrednost u Settings
+            if (Properties.Settings.Default.PlayAudio)
+            {
+                soundPlayer.Play();
+            }
 
             displayCorrectAnswerTimer.Start();
             CurrentGame.QuestionAnswered(CurrentQuestion.DbGameQuestionId, status.ToString());
