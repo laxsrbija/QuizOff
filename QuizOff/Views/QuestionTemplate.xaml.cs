@@ -211,7 +211,7 @@ namespace QuizOff.Views
             questionTimer.Stop();
             displayAnswersTimer.Stop();
             displayCorrectAnswerTimer.Stop();
-            CurrentGame.Main.MainFrame = new Category(CurrentGame.Main, CurrentGame.CurrentCategory.Id);
+            CurrentGame.Main.MainFrame = new Category(CurrentGame.Main, CurrentGame.CurrentCategory);
         }
 
         private void ToggleAudio(object sender, RoutedEventArgs e)

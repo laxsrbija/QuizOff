@@ -12,7 +12,7 @@
     <StackPanel Style="{StaticResource QuizOffStackPanel}" Orientation="Vertical">
         <Grid Margin="20">
             <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="150" HorizontalAlignment="Left"/>
-            <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png" HorizontalAlignment="Right"/>
+            <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png" HorizontalAlignment="Right" Cursor="Hand"/>
         </Grid>
         <Label Style="{StaticResource QuizOffLabel}" FontWeight="Medium" Content="Pick a category:" HorizontalAlignment="Center" FontSize="28" Margin="0, 15, 0, 30"/>
         <StackPanel Name="Categories" Orientation="Vertical"/>

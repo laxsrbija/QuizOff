@@ -96,5 +96,23 @@ namespace QuizOff
             main.AudioIcon = Properties.Settings.Default.PlayAudio ? "on" : "off";
         }
 
+        public static List<Dictionary<string, object>> FetchScoreboardForCategory(DbHelper db, string categoryId, int numberOfRows = 5)
+        {
+
+            var scores = db.SelectMultipleRows(
+                new string[] { "idgame", "total_points", "username" },
+                "from game, user where iduser = user_iduser and category_idcategory = @id order by total_points desc limit " + numberOfRows,
+                new Dictionary<string, string>() { ["@id"] = categoryId }
+            );
+
+            for (var i = 0; i < scores.Count; i++)
+            {
+                scores[i]["rank"] = i + 1;
+            }
+
+            return scores;
+
+        }
+
     }
 }

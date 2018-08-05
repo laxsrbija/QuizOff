@@ -57,13 +57,8 @@ namespace QuizOff.Views
         private void DisplayScoreboard(DbHelper db)
         {
 
-            var scoreboard = db.SelectMultipleRows(
-                new string[] { "idgame", "total_points", "username" },
-                "from game, user where iduser = user_iduser and category_idcategory = @id order by total_points desc limit 5",
-                new Dictionary<string, string>() { ["@id"] = game.CurrentCategory.Id }
-            );
+            var scoreboard = Utils.FetchScoreboardForCategory(db, game.CurrentCategory.Id);
 
-            int rank = 1;
             bool currentGameShown = false;
 
             foreach (var res in scoreboard)
@@ -76,25 +71,22 @@ namespace QuizOff.Views
                     currentGameShown = true;
                 }
 
-                if (rank == 5 && !currentGameShown)
+                if (Convert.ToInt32(score["rank"]) == scoreboard.Count && !currentGameShown)
                 {
-                    rank = GetCurrentGameRank(db);
                     score = new Dictionary<string, object>
                     {
                         ["username"] = game.Main.CurrentUser.Username,
                         ["total_points"] = Points,
-                        ["idgame"] = game.DbGameId.ToString()
+                        ["idgame"] = game.DbGameId.ToString(),
+                        ["rank"] = GetCurrentGameRank(db)
                     };
-
                 }
-
-                Console.WriteLine("{3} {0} {1} {2}", score["idgame"], score["total_points"], score["username"], rank);
 
                 StackPanel panel = new StackPanel();
                 panel.Orientation = Orientation.Horizontal;
 
                 Label l1 = new Label();
-                l1.Content = rank++;
+                l1.Content = score["rank"];
                 panel.Children.Add(l1);
 
                 Label l2 = new Label();
@@ -111,7 +103,6 @@ namespace QuizOff.Views
                 { 
 
                     var currentColor = new SolidColorBrush(Color.FromRgb(143, 188, 143));
-                    Console.WriteLine("Current...");
 
                     l1.Foreground = currentColor;
                     l2.Foreground = currentColor;

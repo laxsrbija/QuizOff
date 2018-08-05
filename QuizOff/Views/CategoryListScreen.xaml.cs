@@ -76,12 +76,11 @@ namespace QuizOff.Views
                     tempStackPanel.Children.Add(new Controls.CategoryItem(main, category));
 
                 }
-
                 
-
             }
 
         }
 
     }
+
 }
