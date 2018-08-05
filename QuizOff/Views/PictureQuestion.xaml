@@ -8,12 +8,8 @@
       d:DesignHeight="300" d:DesignWidth="840"
       Title="PictureQuestion">
 
-    <Grid>
-        <DockPanel>
-            <Image Source="{Binding ParentTemplate.CurrentQuestion.ImageUrl}" DockPanel.Dock="Left" MaxWidth="250"/>
-            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20, 0, 0, 0" DockPanel.Dock="Right">
-                <TextBlock Text="{Binding ParentTemplate.CurrentQuestion.Text}" Style="{StaticResource QuizOffQuestionTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Stretch" TextWrapping="Wrap"/>
-            </Grid>
-        </DockPanel>
-    </Grid>
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Image Source="{Binding ParentTemplate.CurrentQuestion.ImageUrl}" MaxWidth="250" MaxHeight="250" Margin="0, 0, 100, 0"/>
+        <TextBlock Text="{Binding ParentTemplate.CurrentQuestion.Text}" Style="{StaticResource QuizOffQuestionTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+    </StackPanel>
 </Page>

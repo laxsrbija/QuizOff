@@ -9,6 +9,6 @@
       Title="TextQuestion">
     
     <Grid VerticalAlignment="Center">
-        <TextBlock Text="{Binding ParentTemplate.CurrentQuestion.Text}" Style="{StaticResource QuizOffQuestionTextBlock}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding ParentTemplate.CurrentQuestion.Text}" Style="{StaticResource QuizOffQuestionTextBlock}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap" Margin="0, 0, 0, 20"/>
     </Grid>
 </Page>
