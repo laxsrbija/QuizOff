@@ -13,35 +13,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuizOff.Views
+namespace QuizOff.Controls
 {
     /// <summary>
-    /// Interaction logic for CategoryScreen.xaml
+    /// Interaction logic for CategoryItem.xaml
     /// </summary>
-    public partial class CategoryScreen : Page
+    public partial class CategoryItem : UserControl
     {
 
         private MainWindow main;
+        private string categoryId;
 
-        public CategoryScreen(MainWindow main)
+        public CategoryItem(MainWindow main, QuizOff.Models.Category category)
         {
+
             InitializeComponent();
+
+            this.categoryId = category.Id;
             this.main = main;
+
+            Picture.ImageSource = new BitmapImage(new Uri(category.ImageUrl, UriKind.Absolute));
+            Title.Content = category.Name;
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SelectCategory(object sender, MouseButtonEventArgs e)
         {
-            main.MainFrame = new MainMenu(main);
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            main.MainFrame = new Category(main, "1");
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            main.MainFrame = new Category(main, "2");
+            new QuizOff.Views.Category(main, categoryId);
         }
 
     }

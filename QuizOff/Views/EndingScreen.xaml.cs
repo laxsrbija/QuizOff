@@ -22,7 +22,7 @@ namespace QuizOff.Views
     public partial class EndingScreen : Page
     {
 
-        private Game game;
+        private Game game;// TODO: NEKAD SE NE PRIKAZU REZULTATI, VEC ZAGLAVI NA POSLEDNJEM PITANJU
 
         public string Points { private set; get; }
 
@@ -46,7 +46,7 @@ namespace QuizOff.Views
 
         private void PlayAgain(object sender, RoutedEventArgs e)
         {
-            new Game(game.Main, new Models.Category(game.CurrentCategory.Id));
+            //new Game(game.Main, new Models.Category(game.CurrentCategory.Id));
         }
 
         private void ReturnToMain(object sender, RoutedEventArgs e)
