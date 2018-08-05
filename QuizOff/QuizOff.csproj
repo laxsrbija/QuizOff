@@ -99,6 +99,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\CategoryItem.xaml.cs">
+      <DependentUpon>CategoryItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DbHelper.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Game.cs" />
@@ -132,6 +135,10 @@
     <Compile Include="Views\TextQuestion.xaml.cs">
       <DependentUpon>TextQuestion.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\CategoryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -237,6 +244,12 @@
   <ItemGroup>
     <Resource Include="Resources\volume-on.png" />
     <Resource Include="Resources\volume-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\timer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exit-to-app.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

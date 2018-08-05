@@ -9,17 +9,31 @@
       Loaded="Page_Loaded"
       Title="QuestionTemplate">
 
-    <Grid Style="{StaticResource QuizOffGridBackground}">
-        <Label Content="{Binding CurrentGame.CurrentCategory.Name}" HorizontalAlignment="Left" Margin="160,17,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding CurrentGame.QuestionNumber}" HorizontalAlignment="Left" Margin="312,17,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Time, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="420,17,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding CurrentGame.Main.CurrentUser.Username}" HorizontalAlignment="Left" Margin="550,17,0,0" VerticalAlignment="Top"/>
-        <Frame Content="{Binding QuestionTextPage}" HorizontalAlignment="Left" Height="300" Margin="29,64,0,0" VerticalAlignment="Top" Width="840"/>
-        <Button Name="B1" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[0]}" HorizontalAlignment="Left" Margin="29,393,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
-        <Button Name="B2" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[1]}" HorizontalAlignment="Left" Margin="459,393,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
-        <Button Name="B3" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[2]}" HorizontalAlignment="Left" Margin="29,471,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
-        <Button Name="B4" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[3]}" HorizontalAlignment="Left" Margin="459,471,0,0" VerticalAlignment="Top" Width="410" Height="60" Click="AnswerButton_Click"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="27,12,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Margin="678,8,16,502"/>
-    </Grid>
+    <StackPanel Style="{StaticResource QuizOffStackPanel}" Orientation="Vertical">
+        <Grid HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="150"/>
+                <Label Content="{Binding CurrentGame.CurrentCategory.Name}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18" Margin="10, 0, 10, 0"/>
+            </StackPanel>
+            <Grid>
+                <Label Content="{Binding Time, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Height="30" Margin="0, 5, 0, 0" Panel.ZIndex="1"/>
+                <Image Source="/QuizOff;component/Resources/timer.png" Height="55"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Right">
+                <Label Content="Question" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18"/>
+                <Label Content="{Binding CurrentGame.QuestionNumber}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18" Width="100" HorizontalAlignment="Left" />
+                <Image Width="32" Height="32" Source="{Binding CurrentGame.Main.AudioIcon}" MouseDown="ToggleAudio" Margin="10, 0, 10, 0"/>
+                <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png"/>
+            </StackPanel>
+        </Grid>
+        <Frame Content="{Binding QuestionTextPage}" Height="300" Width="840"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="B1" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[0]}"  Width="410" Height="60" Click="AnswerButton_Click" HorizontalAlignment="Center" Margin="0, 0, 10, 0"/>
+            <Button Name="B2" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[1]}"  Width="410" Height="60" Click="AnswerButton_Click" HorizontalAlignment="Center" Margin="10, 0, 0, 0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
+            <Button Name="B3" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[2]}"  Width="410" Height="60" Click="AnswerButton_Click" HorizontalAlignment="Center" Margin="0, 0, 10, 0"/>
+            <Button Name="B4" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[3]}"  Width="410" Height="60" Click="AnswerButton_Click" HorizontalAlignment="Center" Margin="10, 0, 0, 0"/>
+        </StackPanel>
+    </StackPanel>
 </Page>

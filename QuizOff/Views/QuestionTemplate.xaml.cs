@@ -211,12 +211,17 @@ namespace QuizOff.Views
             displayAnswersTimer.Start();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GoBack(object sender, RoutedEventArgs e)
         {
             questionTimer.Stop();
             displayAnswersTimer.Stop();
             displayCorrectAnswerTimer.Stop();
             CurrentGame.Main.MainFrame = new Category(CurrentGame.Main, CurrentGame.CurrentCategory.Id);
+        }
+
+        private void ToggleAudio(object sender, RoutedEventArgs e)
+        {
+            Utils.ToggleAudio(CurrentGame.Main);
         }
 
     }
