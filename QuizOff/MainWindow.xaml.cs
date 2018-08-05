@@ -48,12 +48,22 @@ namespace QuizOff
             }
         }
 
+        private string audioIcon;
+        public string AudioIcon {
+            get => audioIcon;
+            set {
+                audioIcon = "/QuizOff;component/Resources/volume-" + value + ".png";
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AudioIcon"));
+            }
+        }
+
         public MainWindow()
         {
 
             InitializeComponent();
 
             CurrentUser = null;
+            Utils.UpdateAudioIcon(this);
 
             DataContext = this;
 

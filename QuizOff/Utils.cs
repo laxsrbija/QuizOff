@@ -81,5 +81,20 @@ namespace QuizOff
             return date.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
+        public static void ToggleAudio(MainWindow main)
+        {
+
+            Properties.Settings.Default.PlayAudio = !Properties.Settings.Default.PlayAudio;
+            Properties.Settings.Default.Save();
+
+            UpdateAudioIcon(main);
+
+        }
+
+        public static void UpdateAudioIcon(MainWindow main)
+        {
+            main.AudioIcon = Properties.Settings.Default.PlayAudio ? "on" : "off";
+        }
+
     }
 }

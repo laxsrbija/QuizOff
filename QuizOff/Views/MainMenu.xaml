@@ -10,12 +10,12 @@
 
     <StackPanel Style="{StaticResource QuizOffStackPanel}" Orientation="Vertical">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 20, 20, 0">
-            <Label Content="{Binding Username}" Style="{StaticResource QuizOffLabel}" FontSize="18" Margin="0, 0, 20, 0"/>
+            <Label Content="{Binding CurrentUser.Username}" Style="{StaticResource QuizOffLabel}" FontSize="18" Margin="0, 0, 20, 0"/>
             <Image Source="{Binding AudioIcon}" Width="32" Height="32" MouseDown="ToggleAudio"/>
         </StackPanel>
         <Image Height="271" Width="443" Margin="0, 15, 0, 30" Source="/QuizOff;component/Resources/logo-large.png"/>
-        <Button Style="{StaticResource QuizOffButton}" Content="Play" Width="450" Margin="0, 20, 0, 0" Height="40" Click="PlayButton_Click" IsDefault="True" Cursor="Hand"/>
-        <Button Style="{StaticResource QuizOffButton}" Content="Log out" Width="450" Margin="0, 20, 0, 0" Height="40" Click="LogOffButton_Click" Cursor="Hand"/>
+        <Button Style="{StaticResource QuizOffButton}" Content="Play" Width="450" Margin="0, 20, 0, 0" Height="40" Click="PlayButton_Click" IsDefault="True"/>
+        <Button Style="{StaticResource QuizOffButton}" Content="Log out" Width="450" Margin="0, 20, 0, 0" Height="40" Click="LogOffButton_Click"/>
     </StackPanel>
 
 </Page>

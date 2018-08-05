@@ -19,55 +19,36 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page, INotifyPropertyChanged
+    public partial class MainMenu : Page
     {
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private MainWindow main;
-
-        private string audioIcon;
-        public string AudioIcon {
-            get => audioIcon;
-            set {
-                audioIcon = "/QuizOff;component/Resources/volume-" + value + ".png";
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AudioIcon"));
-            }
-        }
-
-        public string Username { get; set; }
+        public MainWindow Main { private set; get; }
 
         public MainMenu(MainWindow main)
         {
 
             InitializeComponent();
 
-            this.main = main;
-            AudioIcon = Properties.Settings.Default.PlayAudio ? "on" : "off";
-            Username = main.CurrentUser.Username;
+            this.Main = main;
 
-            DataContext = this;
+            DataContext = Main;
 
         }
 
         private void LogOffButton_Click(object sender, RoutedEventArgs e)
         {
-            main.CurrentUser = null;
+            Main.CurrentUser = null;
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            main.MainFrame = new CategoryScreen(main);
+            Main.MainFrame = new CategoryScreen(Main);
         }
 
         private void ToggleAudio(object sender, RoutedEventArgs e)
         {
-
-            Properties.Settings.Default.PlayAudio = !Properties.Settings.Default.PlayAudio;
-            Properties.Settings.Default.Save();
-
-            AudioIcon = Properties.Settings.Default.PlayAudio ? "on" : "off";
-
+            Utils.ToggleAudio(Main);
         }
+
     }
 }
