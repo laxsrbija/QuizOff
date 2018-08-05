@@ -1,5 +1,4 @@
-﻿using QuizOff.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,28 +13,31 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuizOff.Views
+namespace QuizOff.Controls
 {
     /// <summary>
-    /// Interaction logic for Category.xaml
+    /// Interaction logic for ScoreboardItem.xaml
     /// </summary>
-    public partial class Category : Page
+    public partial class ScoreboardItem : UserControl
     {
 
-        private MainWindow main;
-        private Models.Category category;
-
-        public Category(MainWindow main, string id)
+        public ScoreboardItem(string rank, string username, string points, double margin = 10)
         {
+
             InitializeComponent();
-            this.main = main;
-            category = new Models.Category(id);
-            DataContext = category;
+
+            Rank.Content = rank;
+            Username.Content = username;
+            Points.Content = points;
+            Container.Margin = new Thickness(margin);
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void SetColor(Color color)
         {
-            new Game(main, category);
+            //todo
         }
+
     }
+
 }

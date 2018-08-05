@@ -1,0 +1,30 @@
+﻿<Page x:Class="QuizOff.Views.Category"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuizOff.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="920"
+      Title="Category">
+
+    <Grid Style="{StaticResource QuizOffGridBackground}">
+        <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" Opacity="0.2"/>
+        <DockPanel>
+            <Grid Margin="20" DockPanel.Dock="Top">
+                <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="150" HorizontalAlignment="Left"/>
+                <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png" HorizontalAlignment="Right" Cursor="Hand"/>
+            </Grid>
+            <DockPanel DockPanel.Dock="Bottom" Margin="20">
+                <Label Style="{StaticResource QuizOffLabel}" Content="{Binding Name}" FontWeight="Bold" FontSize="36" DockPanel.Dock="Top"/>
+                <DockPanel DockPanel.Dock="Top" Margin="0, 20, 0, 0">
+                    <DockPanel DockPanel.Dock="Left">
+                        <TextBlock DockPanel.Dock="Top" Width="500" Style="{StaticResource QuizOffTextBlock}" Text="{Binding Description}" TextWrapping="Wrap" Margin="8, 0, 50, 0" />
+                        <Button Style="{StaticResource QuizOffButton}" Content="Start the game!" Height="59" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Click="StartGame"/>
+                    </DockPanel>
+                    <StackPanel Name="Scoreboard" Orientation="Vertical" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Page>
