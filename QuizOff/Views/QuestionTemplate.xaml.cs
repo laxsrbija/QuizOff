@@ -53,11 +53,6 @@ namespace QuizOff.Views
             buttons = new Button[] { B1, B2, B3, B4 };
             gameRunning = false;
 
-            foreach (var button in buttons) // TODO Sakriti U XAML-u nakon zavrsetka dizajna
-            {
-                button.Visibility = Visibility.Hidden;
-            }
-
             Time = Utils.Parameters.Quiz.TIME_TO_ANSWER;
             questionTimer = new DispatcherTimer();
             questionTimer.Interval = TimeSpan.FromSeconds(1);
