@@ -102,17 +102,20 @@
     <Compile Include="Controls\CategoryItem.xaml.cs">
       <DependentUpon>CategoryItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ScoreboardItem.xaml.cs">
+      <DependentUpon>ScoreboardItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DbHelper.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Views\Category.xaml.cs">
-      <DependentUpon>Category.xaml</DependentUpon>
+    <Compile Include="Views\CategoryDetailsScreen.xaml.cs">
+      <DependentUpon>CategoryDetailsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryScreen.xaml.cs">
-      <DependentUpon>CategoryScreen.xaml</DependentUpon>
+    <Compile Include="Views\CategoryListScreen.xaml.cs">
+      <DependentUpon>CategoryListScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EndingScreen.xaml.cs">
       <DependentUpon>EndingScreen.xaml</DependentUpon>
@@ -139,6 +142,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ScoreboardItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,11 +158,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Category.xaml">
+    <Page Include="Views\CategoryDetailsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CategoryScreen.xaml">
+    <Page Include="Views\CategoryListScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

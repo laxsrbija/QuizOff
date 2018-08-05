@@ -12,7 +12,7 @@ namespace QuizOff
     /// <summary>
     /// Helper class for communicating with the database
     /// </summary>
-    class DbHelper : IDisposable
+    public class DbHelper : IDisposable
     {
 
         private MySqlConnection connection;

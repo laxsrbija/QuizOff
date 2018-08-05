@@ -22,14 +22,14 @@ namespace QuizOff.Controls
     {
 
         private MainWindow main;
-        private string categoryId;
+        private QuizOff.Models.Category category;
 
         public CategoryItem(MainWindow main, QuizOff.Models.Category category)
         {
 
             InitializeComponent();
 
-            this.categoryId = category.Id;
+            this.category = category;
             this.main = main;
 
             Picture.ImageSource = new BitmapImage(new Uri(category.ImageUrl, UriKind.Absolute));
@@ -39,7 +39,7 @@ namespace QuizOff.Controls
 
         private void SelectCategory(object sender, MouseButtonEventArgs e)
         {
-            new QuizOff.Views.Category(main, categoryId);
+            main.MainFrame = new QuizOff.Views.Category(main, category);
         }
 
     }

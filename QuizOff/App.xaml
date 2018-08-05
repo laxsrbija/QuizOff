@@ -60,25 +60,6 @@
             </Setter>
         </Style>
 
-        <Style x:Key="QuizOffCategoryButton" TargetType="Button">
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Gotham"/>
-            <Setter Property="FontSize" Value="16px"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Foreground" Value="#ffffff"/>
-            <Setter Property="Background" Value="#404b69"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="0" >
-                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <Style x:Key="QuizOffLabel" TargetType="Label">
             <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Gotham"/>
             <Setter Property="FontSize" Value="16px"/>
