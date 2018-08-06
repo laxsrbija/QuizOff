@@ -9,10 +9,35 @@
       Title="EndingScreen">
 
     <Grid Style="{StaticResource QuizOffGridBackground}">
-        <Label Content="{Binding Points}" HorizontalAlignment="Left" Margin="69,219,0,0" VerticalAlignment="Top"/>
-        <Button Content="Play Again" HorizontalAlignment="Left" Margin="84,332,0,0" VerticalAlignment="Top" Width="135" Click="PlayAgain"/>
-        <Button Content="Return to Main Menu" HorizontalAlignment="Left" Margin="84,357,0,0" VerticalAlignment="Top" Width="135" Click="ReturnToMain"/>
-        <StackPanel Name="Scoreboard" Orientation="Vertical" HorizontalAlignment="Left" Height="396" Margin="387,34,0,0" VerticalAlignment="Top" Width="370"/>
-        <Label Content="Your score:" HorizontalAlignment="Left" Margin="79,136,0,0" VerticalAlignment="Top"/>
+        <Image Source="{Binding CurrentGame.CurrentCategory.ImageUrl}" Stretch="UniformToFill" Opacity="0.2"/>
+        <DockPanel>
+            <DockPanel Margin="20" DockPanel.Dock="Top" VerticalAlignment="Top">
+                <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="150" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png" HorizontalAlignment="Right" Cursor="Hand" DockPanel.Dock="Right"/>
+                <Label Content="{Binding CurrentGame.Main.CurrentUser.Username}" Style="{StaticResource QuizOffLabel}" FontSize="18" FontWeight="Medium" Margin="0, 0, 20, 0" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom" Margin="20">
+                <Label Style="{StaticResource QuizOffLabel}" Content="{Binding CurrentGame.CurrentCategory.Name}" FontWeight="Bold" FontSize="36" DockPanel.Dock="Top"/>
+                <DockPanel DockPanel.Dock="Top" Margin="0, 20, 0, 0">
+                    <DockPanel DockPanel.Dock="Left" Width="500">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                            <Label Style="{StaticResource QuizOffLabel}" Content="You scored" FontWeight="Medium" FontSize="22"/>
+                            <Label Style="{StaticResource QuizOffLabel}" Content="{Binding Points}" FontWeight="Medium" FontSize="22"/>
+                            <Label Style="{StaticResource QuizOffLabel}" Content="points" FontWeight="Medium" FontSize="22"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                            <Label Style="{StaticResource QuizOffLabel}" Content="Leaderboard position:" FontWeight="Medium" FontSize="22"/>
+                            <Label Style="{StaticResource QuizOffLabel}" Content="{Binding Rank}" FontWeight="Medium" FontSize="22"/>
+                            <Label Style="{StaticResource QuizOffLabel}" Content="place" FontWeight="Medium" FontSize="22"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Style="{StaticResource QuizOffButton}" Content="Play again" Height="59" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Click="StartGame" Margin="0"/>
+                            <Button Style="{StaticResource QuizOffButton}" Content="Return to Main" Height="59" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Click="GoToMain" Margin="10, 0, 0, 0"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <StackPanel Name="Scoreboard" Orientation="Vertical" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using QuizOff.Models;
+﻿using QuizOff.Controls;
+using QuizOff.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +23,17 @@ namespace QuizOff.Views
     public partial class EndingScreen : Page
     {
 
-        private Game game;// TODO: NEKAD SE NE PRIKAZU REZULTATI, VEC ZAGLAVI NA POSLEDNJEM PITANJU
-
+        public Game CurrentGame { private set; get; } // TODO: NEKAD SE NE PRIKAZU REZULTATI, VEC ZAGLAVI NA POSLEDNJEM PITANJU
         public string Points { private set; get; }
+        public string Rank { private set; get; }
 
         public EndingScreen(Game game)
         {
 
             InitializeComponent();
 
-            this.game = game;
+            this.CurrentGame = game;
+
             DataContext = this;
 
             using (var db = new DbHelper())
@@ -42,22 +44,24 @@ namespace QuizOff.Views
 
             }
 
+            Console.WriteLine("ENDING INIT");
+
         }
 
         private void PlayAgain(object sender, RoutedEventArgs e)
         {
-            //new Game(game.Main, new Models.Category(game.CurrentCategory.Id));
+            new Game(CurrentGame.Main, CurrentGame.CurrentCategory);
         }
 
-        private void ReturnToMain(object sender, RoutedEventArgs e)
+        private void GoToMain(object sender, RoutedEventArgs e)
         {
-            game.Main.MainFrame = new MainMenu(game.Main);
+            CurrentGame.Main.MainFrame = new MainMenu(CurrentGame.Main);
         }
 
         private void DisplayScoreboard(DbHelper db)
         {
 
-            var scoreboard = Utils.FetchScoreboardForCategory(db, game.CurrentCategory.Id);
+            var scoreboard = Utils.FetchScoreboardForCategory(db, CurrentGame.CurrentCategory.Id);
 
             bool currentGameShown = false;
 
@@ -66,7 +70,7 @@ namespace QuizOff.Views
 
                 var score = res;
 
-                if (score["idgame"].ToString().Equals(game.DbGameId.ToString()))
+                if (score["idgame"].ToString().Equals(CurrentGame.DbGameId.ToString()))
                 {
                     currentGameShown = true;
                 }
@@ -75,39 +79,25 @@ namespace QuizOff.Views
                 {
                     score = new Dictionary<string, object>
                     {
-                        ["username"] = game.Main.CurrentUser.Username,
+                        ["username"] = CurrentGame.Main.CurrentUser.Username,
                         ["total_points"] = Points,
-                        ["idgame"] = game.DbGameId.ToString(),
+                        ["idgame"] = CurrentGame.DbGameId.ToString(),
                         ["rank"] = GetCurrentGameRank(db)
                     };
                 }
 
-                StackPanel panel = new StackPanel();
-                panel.Orientation = Orientation.Horizontal;
+                var item = new ScoreboardItem(
+                    score["rank"].ToString(), 
+                    score["username"].ToString(), 
+                    score["total_points"].ToString()
+                );
 
-                Label l1 = new Label();
-                l1.Content = score["rank"];
-                panel.Children.Add(l1);
+                Scoreboard.Children.Add(item);
 
-                Label l2 = new Label();
-                l2.Content = score["username"];
-                panel.Children.Add(l2);
-
-                Label l3 = new Label();
-                l3.Content = score["total_points"];
-                panel.Children.Add(l3);
-
-                Scoreboard.Children.Add(panel);
-
-                if (score["idgame"].ToString().Equals(game.DbGameId.ToString()))
-                { 
-
-                    var currentColor = new SolidColorBrush(Color.FromRgb(143, 188, 143));
-
-                    l1.Foreground = currentColor;
-                    l2.Foreground = currentColor;
-                    l3.Foreground = currentColor;
-
+                if (score["idgame"].ToString().Equals(CurrentGame.DbGameId.ToString()))
+                {
+                    item.SetColor(Color.FromRgb(143, 188, 143));
+                    Rank = Utils.GetRankOrdinalString(score["rank"].ToString());
                 }
 
             }
@@ -117,7 +107,17 @@ namespace QuizOff.Views
         private int GetCurrentGameRank(DbHelper db)
         {
             return Convert.ToInt32(db.SelectSingleObject("select count(1) from game, (select total_points from game where idgame = "
-                + game.DbGameId + ") as r where game.total_points > r.total_points").ToString());
+                + CurrentGame.DbGameId + ") as r where game.total_points > r.total_points").ToString());
+        }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            CurrentGame.Main.MainFrame = new CategoryDetailsScreen(CurrentGame.Main, CurrentGame.CurrentCategory);
+        }
+
+        private void StartGame(object sender, RoutedEventArgs e)
+        {
+            new Game(CurrentGame.Main, CurrentGame.CurrentCategory);
         }
 
     }

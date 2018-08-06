@@ -35,7 +35,14 @@ namespace QuizOff.Controls
 
         public void SetColor(Color color)
         {
-            //todo
+
+            var currentColor = new SolidColorBrush(color);
+
+            Rank.Foreground = currentColor;
+            Username.Foreground = currentColor;
+            Points.Foreground = currentColor;
+            PointsStub.Foreground = currentColor;
+
         }
 
     }
