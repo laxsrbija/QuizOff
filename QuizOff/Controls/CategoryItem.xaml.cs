@@ -39,7 +39,7 @@ namespace QuizOff.Controls
 
         private void SelectCategory(object sender, MouseButtonEventArgs e)
         {
-            main.MainFrame = new QuizOff.Views.Category(main, category);
+            main.MainFrame = new QuizOff.Views.CategoryDetailsScreen(main, category);
         }
 
     }

@@ -26,15 +26,21 @@
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
 
-        <!-- TODO: Linija ne treperi -->
         <Style x:Key="QuizOffTextBox" TargetType="TextBox">
-            <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Gotham"/>
-            <Setter Property="Background" Value="#ebebeb"/>
+            <Setter Property="Background" Value="#dbedf3"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="QuizOffPasswordBox" TargetType="PasswordBox">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="0" >
-                            <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Text}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border CornerRadius="5" x:Name="Bd" Background="#dbedf3" BorderBrush="Gray" BorderThickness="1" OpacityMask="{x:Null}">
+                            <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>

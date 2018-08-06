@@ -42,7 +42,7 @@ namespace QuizOff.Views
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.MainFrame = new CategoryScreen(Main);
+            Main.MainFrame = new CategoryListScreen(Main);
         }
 
         private void ToggleAudio(object sender, RoutedEventArgs e)

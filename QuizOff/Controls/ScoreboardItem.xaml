@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel Name="Container" VerticalAlignment="Center">
-        <Label Name="Rank" Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Left" Content="1" Width="40"/>
-        <Label Name="Username" Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Left" Content="asasdasd"/>
-        <Label Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Right" HorizontalAlignment="Right" Content="points"/>
-        <Label Name="Points" Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Right" HorizontalAlignment="Right" Content="220"/>
+        <Label Name="Rank" Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Left" Width="40" FontWeight="Medium"/>
+        <Label Name="Username" Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Left" FontWeight="Medium"/>
+        <Label Name="PointsStub" Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Right" HorizontalAlignment="Right" Content="points" FontWeight="Medium"/>
+        <Label Name="Points" Style="{StaticResource QuizOffLabel}" DockPanel.Dock="Right" HorizontalAlignment="Right" FontWeight="Medium"/>
     </DockPanel>
 </UserControl>

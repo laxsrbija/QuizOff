@@ -10,7 +10,7 @@
 
     <StackPanel Style="{StaticResource QuizOffStackPanel}" Orientation="Vertical">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, 20, 20, 0">
-            <Label Content="{Binding CurrentUser.Username}" Style="{StaticResource QuizOffLabel}" FontSize="18" Margin="0, 0, 20, 0"/>
+            <Label Content="{Binding CurrentUser.Username}" Style="{StaticResource QuizOffLabel}" FontSize="18" FontWeight="Medium" Margin="0, 0, 20, 0"/>
             <Image Source="{Binding AudioIcon}" Width="32" Height="32" MouseDown="ToggleAudio" Cursor="Hand"/>
         </StackPanel>
         <Image Height="271" Width="443" Margin="0, 15, 0, 30" Source="/QuizOff;component/Resources/logo-large.png"/>

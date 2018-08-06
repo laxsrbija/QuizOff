@@ -18,16 +18,18 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for CategoryScreen.xaml
     /// </summary>
-    public partial class CategoryScreen : Page
+    public partial class CategoryListScreen : Page
     {
 
         private MainWindow main;
 
-        public CategoryScreen(MainWindow main)
+        public CategoryListScreen(MainWindow main)
         {
 
             InitializeComponent();
             this.main = main;
+
+            DataContext = main.CurrentUser;
 
             LoadAndDisplayCategories();
 

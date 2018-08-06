@@ -20,40 +20,42 @@ namespace QuizOff.Views
     /// <summary>
     /// Interaction logic for Category.xaml
     /// </summary>
-    public partial class Category : Page
+    public partial class CategoryDetailsScreen : Page
     {
 
         private MainWindow main;
-        private Models.Category category;
+        public Models.Category CurrentCategory { private set; get; }
+        public string Username { private set; get; }
 
-        public Category(MainWindow main, Models.Category category)
+        public CategoryDetailsScreen(MainWindow main, Models.Category category)
         {
 
             InitializeComponent();
 
             this.main = main;
-            this.category = category;
+            this.CurrentCategory = category;
+            this.Username = main.CurrentUser.Username;
 
             DisplayScores();
 
-            DataContext = category;
+            DataContext = this;
 
         }
 
         private void StartGame(object sender, RoutedEventArgs e)
         {
-            new Game(main, category);
+            new Game(main, CurrentCategory);
         }
 
         private void GoBack(object sender, RoutedEventArgs e)
         {
-            main.MainFrame = new CategoryScreen(main);
+            main.MainFrame = new CategoryListScreen(main);
         }
 
         private void DisplayScores()
         {
 
-            var scoreboard = Utils.FetchScoreboardForCategory(new DbHelper(), category.Id, 10);
+            var scoreboard = Utils.FetchScoreboardForCategory(new DbHelper(), CurrentCategory.Id, 10);
 
             foreach (var score in scoreboard)
             {

@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Cursor="Hand" MouseDown="SelectCategory" Height="150" Width="250" Margin="10">
-        <Rectangle RadiusX="15" RadiusY="15">
+        <Rectangle RadiusX="5" RadiusY="5">
             <Rectangle.Fill>
                 <ImageBrush x:Name="Picture" Stretch="UniformToFill" Opacity="0.5"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Name="Title" Style="{StaticResource QuizOffLabel}" Content="Computer Science" FontWeight="Medium" VerticalAlignment="Bottom" Margin="10"/>
+        <Label Name="Title" Style="{StaticResource QuizOffLabel}" FontWeight="Medium" VerticalAlignment="Bottom" Margin="10"/>
     </Grid>
     
 </UserControl>

@@ -13,15 +13,15 @@
         <Grid HorizontalAlignment="Stretch">
             <StackPanel Orientation="Horizontal" Margin="20">
                 <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="150"/>
-                <Label Content="{Binding CurrentGame.CurrentCategory.Name}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18" Margin="10, 0, 10, 0"/>
+                <Label Content="{Binding CurrentGame.CurrentCategory.Name}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18" Margin="10, 0, 10, 0" FontWeight="Medium"/>
             </StackPanel>
             <Grid>
-                <Label Content="{Binding Time, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Height="30" Margin="0, 5, 0, 0" Panel.ZIndex="1"/>
+                <Label Content="{Binding Time, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Height="30" Margin="0, 5, 0, 0" Panel.ZIndex="1" FontWeight="Medium"/>
                 <Image Source="/QuizOff;component/Resources/timer.png" Height="55"/>
             </Grid>
             <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Right">
-                <Label Content="Question" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18"/>
-                <Label Content="{Binding CurrentGame.QuestionNumber}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18" Width="100" HorizontalAlignment="Left" />
+                <Label Content="Question" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18" FontWeight="Medium"/>
+                <Label Content="{Binding CurrentGame.QuestionNumber}" Style="{StaticResource QuizOffLabel}" VerticalAlignment="Center" FontSize="18" Width="100" HorizontalAlignment="Left" FontWeight="Medium"/>
                 <Image Width="32" Height="32" Source="{Binding CurrentGame.Main.AudioIcon}" MouseDown="ToggleAudio" Margin="10, 0, 10, 0"/>
                 <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png"/>
             </StackPanel>

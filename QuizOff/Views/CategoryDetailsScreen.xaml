@@ -1,4 +1,4 @@
-﻿<Page x:Class="QuizOff.Views.Category"
+﻿<Page x:Class="QuizOff.Views.CategoryDetailsScreen"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,17 +9,18 @@
       Title="Category">
 
     <Grid Style="{StaticResource QuizOffGridBackground}">
-        <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" Opacity="0.2"/>
+        <Image Source="{Binding CurrentCategory.ImageUrl}" Stretch="UniformToFill" Opacity="0.2"/>
         <DockPanel>
-            <Grid Margin="20" DockPanel.Dock="Top">
-                <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="150" HorizontalAlignment="Left"/>
-                <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png" HorizontalAlignment="Right" Cursor="Hand"/>
-            </Grid>
+            <DockPanel Margin="20" DockPanel.Dock="Top">
+                <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="150" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png" HorizontalAlignment="Right" Cursor="Hand" DockPanel.Dock="Right"/>
+                <Label Content="{Binding Username}" Style="{StaticResource QuizOffLabel}" FontSize="18" FontWeight="Medium" Margin="0, 0, 20, 0" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+            </DockPanel>
             <DockPanel DockPanel.Dock="Bottom" Margin="20">
-                <Label Style="{StaticResource QuizOffLabel}" Content="{Binding Name}" FontWeight="Bold" FontSize="36" DockPanel.Dock="Top"/>
+                <Label Style="{StaticResource QuizOffLabel}" Content="{Binding CurrentCategory.Name}" FontWeight="Bold" FontSize="36" DockPanel.Dock="Top"/>
                 <DockPanel DockPanel.Dock="Top" Margin="0, 20, 0, 0">
                     <DockPanel DockPanel.Dock="Left">
-                        <TextBlock DockPanel.Dock="Top" Width="500" Style="{StaticResource QuizOffTextBlock}" Text="{Binding Description}" TextWrapping="Wrap" Margin="8, 0, 50, 0" />
+                        <TextBlock DockPanel.Dock="Top" Width="500" Style="{StaticResource QuizOffTextBlock}" Text="{Binding CurrentCategory.Description}" TextWrapping="Wrap" Margin="8, 0, 50, 0" />
                         <Button Style="{StaticResource QuizOffButton}" Content="Start the game!" Height="59" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Click="StartGame"/>
                     </DockPanel>
                     <StackPanel Name="Scoreboard" Orientation="Vertical" DockPanel.Dock="Right"/>
