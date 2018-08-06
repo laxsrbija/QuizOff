@@ -8,15 +8,24 @@
       d:DesignHeight="561" d:DesignWidth="904"
       Title="LoginMenu">
 
-    <Grid Style="{StaticResource QuizOffGridBackground}">
-        <Image HorizontalAlignment="Center" Height="271" Margin="231,58,230,0" VerticalAlignment="Top" Width="443" Source="/QuizOff;component/Resources/logo-large.png"/>
-        <TextBlock FontFamily="pack://application:,,,/Resources/#Gotham" Foreground="White" HorizontalAlignment="Left" Margin="479,404,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec adipisci nilla quis libero egestas lobortis. Duis blandit imperdiet ornare. Nulla ac arcu ut purus placerat congue. Integer pretium fermentum gravida." VerticalAlignment="Top" Height="59" Width="344"/>
-        <Button Content="Log In" HorizontalAlignment="Left" Margin="83,468,0,0" VerticalAlignment="Top" Width="344" Click="LoginButton_Click" IsDefault="True" Height="23"/>
-        <Button Content="Create an account" HorizontalAlignment="Left" Margin="479,468,0,0" VerticalAlignment="Top" Width="344" Click="SignUpButton_Click" RenderTransformOrigin="0.5,0.5" Height="23">
-        </Button>
-        <TextBox Text="lax" Name="Username" HorizontalAlignment="Left" Height="23" Margin="83,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344"/>
-        <PasswordBox Password="lax" Name="Password" HorizontalAlignment="Left" Height="23" Margin="83,432,0,0" VerticalAlignment="Top" Width="344"/>
-        <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="135" Margin="452,381,0,0" VerticalAlignment="Top" Width="1"/>
-
-    </Grid>
+    <StackPanel Style="{StaticResource QuizOffStackPanel}" Orientation="Vertical">
+        <Image HorizontalAlignment="Center" Width="443" Source="/QuizOff;component/Resources/logo-large.png" Margin="0, 71, 0, 30"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBox Style="{StaticResource QuizOffTextBox}" Text="lax" Padding="5" Name="Username" Height="30" TextWrapping="Wrap" Width="345" Margin="0, 0, 0, 5"/>
+                <PasswordBox Style="{StaticResource QuizOffPasswordBox}" Password="lax" Padding="5" Name="Password" Height="30" Width="345" Margin="0, 0, 0, 10"/>
+                <Button Style="{StaticResource QuizOffButton}" Content="Log In" Width="345" Click="LoginButton_Click" IsDefault="True" Height="30"/>
+            </StackPanel>
+            <Border BorderBrush="White" BorderThickness="1" Height="135" Width="1" Margin="15"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock FontFamily="pack://application:,,,/Resources/#Gotham" Foreground="White" TextWrapping="Wrap" Width="345" Margin="0, 0, 0, 11">
+                    Welcome to QuizOff - a trivia quiz game!<LineBreak/>
+                    Test your knowledge in various categories and compete with your friends.<LineBreak/>
+                    <LineBreak/>
+                    Create a free account by clicking the button below.
+                </TextBlock>
+                <Button Style="{StaticResource QuizOffButton}" Content="Create an account" Width="345" Click="SignUpButton_Click" Height="30"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </Page>
