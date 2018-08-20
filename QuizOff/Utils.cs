@@ -114,5 +114,40 @@ namespace QuizOff
 
         }
 
+        public static string GetRankOrdinalString(string rank)
+        {
+
+            string sufix;
+
+            if (rank.Equals("11") || rank.Equals("12") || rank.Equals("13"))
+            {
+                sufix = "th";
+            } else
+            {
+
+                var last = rank.Last();
+
+                switch (last)
+                {
+                    case '1':
+                        sufix = "st";
+                        break;
+                    case '2':
+                        sufix = "nd";
+                        break;
+                    case '3':
+                        sufix = "rd";
+                        break;
+                    default:
+                        sufix = "th";
+                        break;
+                }
+
+            }
+
+            return rank + sufix;
+
+        }
+
     }
 }
