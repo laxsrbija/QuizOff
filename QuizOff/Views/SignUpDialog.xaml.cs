@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizOff.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,25 +20,75 @@ namespace QuizOff.Views
     /// </summary>
     public partial class SignUpDialog : Window
     {
-        
-        // TODO: Omogućiti dugme tek kada oba polja budu popunjena
+
+        public User CurrentUser { private set; get; }
 
         public SignUpDialog()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SignUp(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            bool result = CreateUser();
+
+            if (result)
+            {
+                DialogResult = true;
+
+            } else
+            {
+                Invalidate();
+            }
+
         }
 
-        public string Username {
-            get => SignupUsername.Text;
+        private void Invalidate()
+        {
+            SignupUsername.Foreground = new SolidColorBrush(Colors.Red);
         }
 
-        public string Password {
-            get => SignupPassword.Password;
+        private bool CreateUser()
+        {
+
+            string username = SignupUsername.Text;
+            string password = Utils.Hashing.HashPassword(username, SignupPassword.Password);
+
+            if (username.Length == 0 || password.Length == 0)
+            {
+                return false;
+            }
+
+            using (var db = new DbHelper())
+            {
+                if (db.SelectSingleObject("select iduser from user where username = @u", new Dictionary<string, string>() { ["@u"] = username }) == null)
+                {
+                    var id = db.Insert("insert into user (username, password) values (@u, @p)", new Dictionary<string, string>() { ["@u"] = username, ["@p"] = password });
+                    if (id > 0)
+                    {
+                        CurrentUser = new User(id.ToString(), username);
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+        }
+
+        private void OnChange()
+        {
+            SignupUsername.Foreground = new SolidColorBrush(Colors.Black);
+        }
+
+        private void SignupUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            OnChange();
+        }
+
+        private void SignupPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            OnChange();
         }
 
     }

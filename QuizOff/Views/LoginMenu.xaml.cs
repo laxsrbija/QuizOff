@@ -32,7 +32,7 @@ namespace QuizOff.Views
             int id = CheckLogin(username, hashedPassword);
             if (id != -1)
             {
-                main.CurrentUser = new User(id.ToString(), Username.Text, "asd");
+                main.CurrentUser = new User(id.ToString(), Username.Text);
                 main.MainFrame = new MainMenu(main);
             }
             
@@ -43,33 +43,12 @@ namespace QuizOff.Views
 
             var dialog = new SignUpDialog();
 
-            if ((bool) dialog.ShowDialog())
+            if ((bool)dialog.ShowDialog())
             {
-
-                // TODO: Premestiti logiku u sam SignUpDialog
-                var username = dialog.Username;
-                var password = Utils.Hashing.HashPassword(username, dialog.Password);
-
-                using (var db = new DbHelper())
-                {
-                    if (db.SelectSingleObject("select iduser from user where username = @u", new Dictionary<string, string>() { ["@u"] = username }) == null)
-                    {
-                        var id = db.Insert("insert into user (username, password) values (@u, @p)", new Dictionary<string, string>() { ["@u"] = username, ["@p"] = password });
-                        if (id > 0)
-                        {
-                            MessageBox.Show("Account successfully created.\nYou may now log in.");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Username already exists!");
-                    }
-                }
-
-            } else
-            {
-                MessageBox.Show("N");
+                main.CurrentUser = dialog.CurrentUser;
+                main.MainFrame = new MainMenu(main);
             }
+
         }
 
         private int CheckLogin(string username, string hashedPassword)
