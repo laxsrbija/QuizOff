@@ -9,32 +9,18 @@ namespace QuizOff.Models
     public class User
     {
 
-        private string id;
-        private string username;
-        private string hashedPassword;
+        public string Id { set; get; }
+        public string Username { set; get; }
 
-        public User(string id, string username, string hashedPassword)
+        public User(string id, string username)
         {
-            this.id = id;
-            this.username = username;
-            this.hashedPassword = hashedPassword;
-        }
-
-        public string Id {
-            get => id;
-        }
-
-        public string Username {
-            get => username;
-        }
-
-        public string HashedPassword {
-            get => hashedPassword;
+            this.Id = id;
+            this.Username = username;
         }
 
         public override string ToString()
         {
-            return "User with ID " + id + " and username " + username;
+            return "User with ID " + Id + " and username " + Username;
         }
 
     }
