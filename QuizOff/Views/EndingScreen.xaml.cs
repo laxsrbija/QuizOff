@@ -105,8 +105,14 @@ namespace QuizOff.Views
 
         private int GetCurrentGameRank(DbHelper db)
         {
-            return Convert.ToInt32(db.SelectSingleObject("select count(1) from game, (select total_points from game where idgame = "
-                + CurrentGame.DbGameId + ") as r where game.total_points > r.total_points").ToString());
+
+            var queryString = "select find_in_set(total_points, " 
+                + "(select group_concat(total_points order by total_points desc) from game where category_idcategory = " 
+                + CurrentGame.CurrentCategory.Id+ ")) as rank from game where idgame = " + CurrentGame.DbGameId;
+
+            var k = Convert.ToInt32(db.SelectSingleObject(queryString).ToString());
+            Console.WriteLine("{0} {1} {2}", k, CurrentGame.CurrentCategory.Id, CurrentGame.DbGameId);
+            return k;
         }
 
         private void GoBack(object sender, RoutedEventArgs e)
