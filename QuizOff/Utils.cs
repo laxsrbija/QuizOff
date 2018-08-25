@@ -15,10 +15,10 @@ namespace QuizOff
             public static class Db
             {
 
-                public const string DB_HOST = "localhost";
+                public const string DB_HOST = "piro.ddns.net";
                 public const string DB_PORT = "3306";
-                public const string DB_USER = "root";
-                public const string DB_PASSWORD = "";
+                public const string DB_USER = "quizoff";
+                public const string DB_PASSWORD = "Gw3mkRRQGZTx14co";
                 public const string DB_NAME = "quizoff";
 
             }
@@ -146,6 +146,42 @@ namespace QuizOff
             }
 
             return rank + sufix;
+
+        }
+
+        public static bool ValidateUsername(string username)
+        {
+
+            if (username == null || username.Length < 3)
+            {
+                return false;
+            }
+
+            List<string> disallowedCharacters = new List<string>
+            {
+                " ",
+                "'",
+                "\"",
+                "@",
+                "\0",
+                "\b",
+                "\n",
+                "\r",
+                "\t",
+                "\\",
+                "%",
+                "_"
+            };
+
+            foreach (var c in disallowedCharacters)
+            {
+                if (username.Contains(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
 
         }
 

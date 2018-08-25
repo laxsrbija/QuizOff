@@ -54,7 +54,7 @@ namespace QuizOff.Views
             string username = SignupUsername.Text;
             string password = Utils.Hashing.HashPassword(username, SignupPassword.Password);
 
-            if (username.Length == 0 || password.Length == 0)
+            if (!Utils.ValidateUsername(username) || password.Length == 0)
             {
                 return false;
             }
