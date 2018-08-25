@@ -26,7 +26,7 @@
                 <Image Width="32" Height="32" MouseDown="GoBack" Source="/QuizOff;component/Resources/exit-to-app.png"/>
             </StackPanel>
         </Grid>
-        <Frame Content="{Binding QuestionTextPage}" Height="300" Width="840"/>
+        <Frame Content="{Binding QuestionTextPage}" Height="315" Width="840"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="B1" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[0]}"  Width="410" Height="60" Click="AnswerButton_Click" HorizontalAlignment="Center" Margin="0, 0, 10, 0" Visibility="Hidden"/>
             <Button Name="B2" Style="{StaticResource QuizOffButton}" Content="{Binding CurrentQuestion[1]}"  Width="410" Height="60" Click="AnswerButton_Click" HorizontalAlignment="Center" Margin="10, 0, 0, 0" Visibility="Hidden"/>

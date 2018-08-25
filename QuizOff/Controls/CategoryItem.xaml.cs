@@ -22,9 +22,9 @@ namespace QuizOff.Controls
     {
 
         private MainWindow main;
-        private QuizOff.Models.Category category;
+        private Models.Category category;
 
-        public CategoryItem(MainWindow main, QuizOff.Models.Category category)
+        public CategoryItem(MainWindow main, Models.Category category)
         {
 
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace QuizOff.Controls
 
         private void SelectCategory(object sender, MouseButtonEventArgs e)
         {
-            main.MainFrame = new QuizOff.Views.CategoryDetailsScreen(main, category);
+            main.MainFrame = new Views.CategoryDetailsScreen(main, category);
         }
 
     }

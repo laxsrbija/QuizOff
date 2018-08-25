@@ -31,7 +31,7 @@ namespace QuizOff.Models
 
         public long DbGameQuestionId { set; get; }
 
-        private List<string> answers;
+        private readonly List<string> answers;
         public string this[int id] {
             get {
                 if (id >= 0 && id < 4)

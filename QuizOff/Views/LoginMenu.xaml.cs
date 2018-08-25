@@ -23,9 +23,6 @@ namespace QuizOff.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-
-            Console.WriteLine(Utils.Hashing.HashPassword(Username.Text, Password.Password));
-
             string username = Username.Text;
             string hashedPassword = Utils.Hashing.HashPassword(Username.Text, Password.Password);
 

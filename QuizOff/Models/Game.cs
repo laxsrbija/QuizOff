@@ -72,16 +72,6 @@ namespace QuizOff.Models
 
         }
 
-        private void InsertGameStartTime(object sender, NtpTimeReceivedEventArgs e)
-        {
-            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
-            Console.WriteLine("Game start time: {0}", time);
-            using (var db = new DbHelper())
-            {
-                DbGameId = db.Insert("insert into game (user_iduser, category_idcategory, time_start) values (" + Main.CurrentUser.Id + ", " + CurrentCategory.Id + ", '" + time + "')");
-            }
-        }
-
         public void ShowNextQuestion()
         {
 
@@ -107,23 +97,6 @@ namespace QuizOff.Models
 
         }
 
-        private void UpdateGameEndTime(object sender, NtpTimeReceivedEventArgs e)
-        {
-
-            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
-            Console.WriteLine("Game end time: {0}", time);
-
-            using (var db = new DbHelper())
-            {
-                db.Update("update game set time_end = '" + time + "' where idgame = " + DbGameId);
-            }
-
-            Application.Current.Dispatcher.Invoke((Action)(() => {
-                Main.MainFrame = new EndingScreen(this);
-            }));
-
-        }
-
         public void QuestionStarted(Question question)
         {
             new Thread(() =>
@@ -136,17 +109,6 @@ namespace QuizOff.Models
                 client.BeginRequestTime();
 
             }).Start();
-        }
-
-        private void InsertQuestionStartTime(object sender, NtpTimeReceivedEventArgs e, Question question)
-        {
-            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
-            Console.WriteLine("Question {1} for game {2} start time: {0}", time, QuestionNumber, DbGameId);
-            using (var db = new DbHelper())
-            {
-                question.DbGameQuestionId = db.Insert("insert into game_questions (game_idgame, question_idquestion, time_served) values ("
-                    + DbGameId.ToString() + ", " + question.Id + ", '" + time + "')");
-            }
         }
 
         public void QuestionAnswered(long dbGameQuestionId, string status)
@@ -173,7 +135,47 @@ namespace QuizOff.Models
             }
         }
 
-        // TODO: Dodati #region sekcije radi citljivosti
+        #region NTP Server events
+
+        private void InsertGameStartTime(object sender, NtpTimeReceivedEventArgs e)
+        {
+            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
+            Console.WriteLine("Game start time: {0}", time);
+            using (var db = new DbHelper())
+            {
+                DbGameId = db.Insert("insert into game (user_iduser, category_idcategory, time_start) values (" + Main.CurrentUser.Id + ", " + CurrentCategory.Id + ", '" + time + "')");
+            }
+        }
+
+        private void UpdateGameEndTime(object sender, NtpTimeReceivedEventArgs e)
+        {
+
+            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
+            Console.WriteLine("Game end time: {0}", time);
+
+            using (var db = new DbHelper())
+            {
+                db.Update("update game set time_end = '" + time + "' where idgame = " + DbGameId);
+            }
+
+            Application.Current.Dispatcher.Invoke((Action)(() => {
+                Main.MainFrame = new EndingScreen(this);
+            }));
+
+        }
+
+        private void InsertQuestionStartTime(object sender, NtpTimeReceivedEventArgs e, Question question)
+        {
+            var time = Utils.DateTimeToMySqlFormat(e.CurrentTime);
+            Console.WriteLine("Question {1} for game {2} start time: {0}", time, QuestionNumber, DbGameId);
+            using (var db = new DbHelper())
+            {
+                question.DbGameQuestionId = db.Insert("insert into game_questions (game_idgame, question_idquestion, time_served) values ("
+                    + DbGameId.ToString() + ", " + question.Id + ", '" + time + "')");
+            }
+        }
+
+        #endregion
 
     }
 

@@ -20,10 +20,19 @@ namespace QuizOff
         public DbHelper()
         {
 
-            var connectionString = "server=" + Utils.Parameters.Db.DB_HOST + ";user=" + Utils.Parameters.Db.DB_USER
-                + ";database=" + Utils.Parameters.Db.DB_NAME + ";port=" + Utils.Parameters.Db.DB_PORT + ";password=" + Utils.Parameters.Db.DB_PASSWORD;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("server=");
+            sb.Append(Utils.Parameters.Db.DB_HOST);
+            sb.Append(";user=");
+            sb.Append(Utils.Parameters.Db.DB_USER);
+            sb.Append(";database=");
+            sb.Append(Utils.Parameters.Db.DB_NAME);
+            sb.Append(";port=");
+            sb.Append(Utils.Parameters.Db.DB_PORT);
+            sb.Append(";password=");
+            sb.Append(Utils.Parameters.Db.DB_PASSWORD);
 
-            connection = new MySqlConnection(connectionString);
+            connection = new MySqlConnection(sb.ToString());
 
             try
             {

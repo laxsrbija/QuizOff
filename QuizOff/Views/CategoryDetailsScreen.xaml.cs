@@ -24,10 +24,10 @@ namespace QuizOff.Views
     {
 
         private MainWindow main;
-        public Models.Category CurrentCategory { private set; get; }
+        public Category CurrentCategory { private set; get; }
         public string Username { private set; get; }
 
-        public CategoryDetailsScreen(MainWindow main, Models.Category category)
+        public CategoryDetailsScreen(MainWindow main, Category category)
         {
 
             InitializeComponent();

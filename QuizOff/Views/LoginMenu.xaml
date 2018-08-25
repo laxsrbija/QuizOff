@@ -12,9 +12,9 @@
         <Image HorizontalAlignment="Center" Width="443" Source="/QuizOff;component/Resources/logo-large.png" Margin="0, 71, 0, 30"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <TextBox Style="{StaticResource QuizOffTextBox}" Text="lax" Padding="5" Name="Username" Height="30" TextWrapping="Wrap" Width="345" Margin="0, 0, 0, 5"/>
-                <PasswordBox Style="{StaticResource QuizOffPasswordBox}" Password="lax" Padding="5" Name="Password" Height="30" Width="345" Margin="0, 0, 0, 10"/>
-                <Button Style="{StaticResource QuizOffButton}" Content="Log In" Width="345" Click="LoginButton_Click" IsDefault="True" Height="30"/>
+                <TextBox Style="{StaticResource QuizOffTextBox}" Padding="5" Name="Username" Height="30" TextWrapping="Wrap" Width="345" Margin="0, 0, 0, 5" TabIndex="1"/>
+                <PasswordBox Style="{StaticResource QuizOffPasswordBox}" Padding="5" Name="Password" Height="30" Width="345" Margin="0, 0, 0, 10" TabIndex="2"/>
+                <Button Style="{StaticResource QuizOffButton}" Content="Log In" Width="345" Click="LoginButton_Click" IsDefault="True" Height="30" TabIndex="3"/>
             </StackPanel>
             <Border BorderBrush="White" BorderThickness="1" Height="135" Width="1" Margin="15"/>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">

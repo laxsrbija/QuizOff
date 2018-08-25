@@ -10,6 +10,6 @@
 
     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Image Source="{Binding ParentTemplate.CurrentQuestion.ImageUrl}" MaxWidth="250" MaxHeight="250" Margin="0, 0, 100, 0"/>
-        <TextBlock Text="{Binding ParentTemplate.CurrentQuestion.Text}" Style="{StaticResource QuizOffQuestionTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding ParentTemplate.CurrentQuestion.Text}" Style="{StaticResource QuizOffQuestionTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="500"/>
     </StackPanel>
 </Page>
