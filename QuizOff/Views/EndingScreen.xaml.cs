@@ -62,7 +62,6 @@ namespace QuizOff.Views
         {
 
             var scoreboard = Utils.FetchScoreboardForCategory(db, CurrentGame.CurrentCategory.Id);
-
             bool currentGameShown = false;
 
             foreach (var res in scoreboard)
@@ -82,7 +81,7 @@ namespace QuizOff.Views
                         ["username"] = CurrentGame.Main.CurrentUser.Username,
                         ["total_points"] = Points,
                         ["idgame"] = CurrentGame.DbGameId.ToString(),
-                        ["rank"] = GetCurrentGameRank(db)
+                        ["rank"] = Math.Max(GetCurrentGameRank(db), scoreboard.Count)
                     };
                 }
 
