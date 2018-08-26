@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace QuizOff
@@ -157,31 +158,8 @@ namespace QuizOff
                 return false;
             }
 
-            List<string> disallowedCharacters = new List<string>
-            {
-                " ",
-                "'",
-                "\"",
-                "@",
-                "\0",
-                "\b",
-                "\n",
-                "\r",
-                "\t",
-                "\\",
-                "%",
-                "_"
-            };
-
-            foreach (var c in disallowedCharacters)
-            {
-                if (username.Contains(c))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            var regex = new Regex("^[a-zA-Z0-9]+$");
+            return regex.IsMatch(username);
 
         }
 

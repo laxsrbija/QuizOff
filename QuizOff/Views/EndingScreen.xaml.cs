@@ -110,9 +110,8 @@ namespace QuizOff.Views
                 + "(select group_concat(total_points order by total_points desc) from game where category_idcategory = " 
                 + CurrentGame.CurrentCategory.Id+ ")) as rank from game where idgame = " + CurrentGame.DbGameId;
 
-            var k = Convert.ToInt32(db.SelectSingleObject(queryString).ToString());
-            Console.WriteLine("{0} {1} {2}", k, CurrentGame.CurrentCategory.Id, CurrentGame.DbGameId);
-            return k;
+            return Convert.ToInt32(db.SelectSingleObject(queryString).ToString());
+
         }
 
         private void GoBack(object sender, RoutedEventArgs e)
