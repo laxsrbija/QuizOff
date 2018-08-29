@@ -35,29 +35,28 @@ namespace QuizOff.Views
             if (result)
             {
                 DialogResult = true;
-
-            } else
-            {
-                Invalidate();
             }
 
-        }
-
-        private void Invalidate()
-        {
-            SignupUsername.Foreground = new SolidColorBrush(Colors.Red);
         }
 
         private bool CreateUser()
         {
 
             string username = SignupUsername.Text;
-            string password = Utils.Hashing.HashPassword(username, SignupPassword.Password);
-
-            if (!Utils.ValidateUsername(username) || password.Length == 0)
+            
+            if (!Utils.ValidateUsername(username))
             {
+                new ErrorDialog("Invalid username").ShowDialog();
                 return false;
             }
+
+            if (SignupPassword.Password.Length == 0)
+            {
+                new ErrorDialog("Password cannot be empty").ShowDialog();
+                return false;
+            }
+
+            string password = Utils.Hashing.HashPassword(username, SignupPassword.Password);
 
             using (var db = new DbHelper())
             {
@@ -69,26 +68,14 @@ namespace QuizOff.Views
                         CurrentUser = new User(id.ToString(), username);
                         return true;
                     }
+                } else
+                {
+                    new ErrorDialog("Username already exists").ShowDialog();
                 }
             }
 
             return false;
 
-        }
-
-        private void OnChange()
-        {
-            SignupUsername.Foreground = new SolidColorBrush(Colors.Black);
-        }
-
-        private void SignupUsername_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            OnChange();
-        }
-
-        private void SignupPassword_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            OnChange();
         }
 
     }

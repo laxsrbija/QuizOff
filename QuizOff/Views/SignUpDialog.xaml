@@ -10,9 +10,9 @@
         <StackPanel Margin="10">
             <Image Source="/QuizOff;component/Resources/logo-horizontal.png" Width="200" Margin="0, 10, 0, 15"/>
             <Label Content="Username:" Style="{StaticResource QuizOffLabel}"/>
-            <TextBox Name="SignupUsername" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Stretch" Style="{StaticResource QuizOffTextBox}" Margin="0, 0, 0, 10" Padding="5" TextChanged="SignupUsername_TextChanged"/>
+            <TextBox Name="SignupUsername" Height="30" TextWrapping="Wrap" HorizontalContentAlignment="Stretch" Style="{StaticResource QuizOffTextBox}" Margin="0, 0, 0, 10" Padding="5"/>
             <Label Content="Password:" Style="{StaticResource QuizOffLabel}"/>
-            <PasswordBox Name="SignupPassword" Height="30" HorizontalContentAlignment="Stretch" Style="{StaticResource QuizOffPasswordBox}" Padding="5" PasswordChanged="SignupPassword_PasswordChanged"/>
+            <PasswordBox Name="SignupPassword" Height="30" HorizontalContentAlignment="Stretch" Style="{StaticResource QuizOffPasswordBox}" Padding="5"/>
             <Button Content="Sign Up" Height="30" IsDefault="True" Click="SignUp" Style="{StaticResource QuizOffButton}" Margin="0, 20, 0, 0"/>
         </StackPanel>
     </Grid>

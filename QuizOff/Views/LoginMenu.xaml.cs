@@ -59,6 +59,9 @@ namespace QuizOff.Views
                 if (result != null)
                 {
                     ret = Convert.ToInt32(result);
+                } else
+                {
+                    new ErrorDialog("Invalid credentials").ShowDialog();
                 }
             }
 

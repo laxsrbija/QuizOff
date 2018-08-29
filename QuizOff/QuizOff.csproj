@@ -106,6 +106,9 @@
       <DependentUpon>ScoreboardItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="DbHelper.cs" />
+    <Compile Include="ErrorDialog.xaml.cs">
+      <DependentUpon>ErrorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Question.cs" />
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ScoreboardItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ErrorDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\exit-to-app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\alert-octagon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
