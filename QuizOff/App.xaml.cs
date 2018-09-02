@@ -13,5 +13,19 @@ namespace QuizOff
     /// </summary>
     public partial class App : Application
     {
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+
+            if (e.Exception is InvalidOperationException)
+            {
+
+                new ErrorDialog("Cannot connect to the server.\nThe application will now close.").ShowDialog();
+
+                e.Handled = true;
+                Shutdown(1);
+
+            }
+
+        }
     }
 }
