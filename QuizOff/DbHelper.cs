@@ -53,30 +53,7 @@ namespace QuizOff
         /// <returns>Reader of the resulting data set</returns>
         private MySqlDataReader FetchDataFromQuery(string query, Dictionary<string, string> parameters)
         {
-
-            MySqlCommand command;
-
-            if (parameters != null)
-            {
-                command = new MySqlCommand();
-                command.Connection = connection;
-
-                command.CommandText = query;
-                command.Prepare();
-
-                foreach (var key in parameters.Keys)
-                {
-                    command.Parameters.AddWithValue(key, parameters[key]);
-                }
-
-            }
-            else
-            {
-                command = new MySqlCommand(query, connection);
-            }
-
-            return command.ExecuteReader();
-
+            return PrepareNonExecuteCommand(query, parameters).ExecuteReader();
         }
 
         /// <summary>
